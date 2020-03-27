@@ -1,0 +1,40 @@
+/*! custom */
+.notif{
+  border-radius: 50% !important;
+  height: 20px !important; 
+  width: 20px !important;
+  background-color: red !important;
+  display: inline-block !important;
+  text-align:center !important;   
+  color:white !important;
+}
+.notify{
+  height: 10px !important; 
+  width: 10px !important;
+  position: relative;
+  bottom: 5px;
+  left: 5px;
+}
+.notify1{
+  height: 8px !important; 
+  width: 8px !important;
+  left: 15px;
+  bottom: 33px;
+}
+.notif:empty{
+  display: none !important;
+}
+.notify:empty{
+  display: none !important;
+}
+.notify1:empty{
+  display: none !important;
+}
+@media only screen and (max-width : 600px){
+  #mypap{
+    width: 25% !important;
+  }
+  #myname{
+    font-size:7vw !important;
+  }
+}

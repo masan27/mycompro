@@ -1,0 +1,15 @@
+t_izin
+{
+	id
+	tanggal
+	kelas
+  astur
+}
+jika ada astur yg izin maka akan insert semua kecuali astur
+  jika ada yg acc akan update astur saja
+    lalu pada pemilihan kelas di tambah query get_data_izin()
+      isi get_data_izin() : cek jika tanggal = hari ini, ambil semua field
+
+lalu jika tidak jadi izin, tinggal hapus data izin yg dibuat sebelumnya
+  otomatis akan menghapus data yg sudah ada, walaupun sudah ada yg bersedia menggantikannya
+
