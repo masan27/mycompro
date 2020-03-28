@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_login');
+		$this->load->model('user_model');
 	}
 
 	// Login page
@@ -29,7 +29,7 @@ class Login extends CI_Controller {
 		// End validasi
 
 		$data = array(	'title'		=> 'Halaman Login');
-		$this->load->view('v_login', $data);
+		$this->load->view('login/list', $data);
 	}
 
 	// Logout

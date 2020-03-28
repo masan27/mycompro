@@ -9,14 +9,14 @@ class Simple_login
 	{
         $this->CI =& get_instance();
         // load user model
-        $this->CI->load->model('m_login');
+        $this->CI->load->model('m_user');
 	}
 
 	// Fungsi login
 	public function login($username,$password)
 	{
 		// Check user yang login
-		$user_login = $this->CI->m_login->login($username,$password);
+		$user_login = $this->CI->m_user->login($username,$password);
 		// Kalau ada, maka masuk ke halaman dashboard
 		if($user_login) {
 			$id_user 		= $user_login->id_user;

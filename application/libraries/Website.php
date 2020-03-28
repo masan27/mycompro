@@ -8,20 +8,20 @@ class Website
 	public function __construct()
 	{
 		$this->CI =& get_instance();
-		$this->CI->load->model('konfigurasi_model');		
+		$this->CI->load->model('m_konfig');		
 	}
 
 	// Sitename
 	public function namaweb()
 	{
-		$site = $this->CI->konfigurasi_model->listing();
+		$site = $this->CI->m_konfig->listing();
 		return $site->namaweb;
 	}
 
 	// Alamat
 	public function logo()
 	{
-		$site 	= $this->CI->konfigurasi_model->listing();
+		$site 	= $this->CI->m_konfig->listing();
 		$logo 	= base_url('assets/pendukung/'.$site->logo);
 		return $logo;
 	}
@@ -29,7 +29,7 @@ class Website
 	// Alamat
 	public function icon()
 	{
-		$site 	= $this->CI->konfigurasi_model->listing();
+		$site 	= $this->CI->m_konfig->listing();
 		$icon 	= base_url('assets/pendukung/'.$site->icon);
 		return $icon;
 	}

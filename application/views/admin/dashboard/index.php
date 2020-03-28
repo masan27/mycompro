@@ -61,7 +61,7 @@ if (isset($_COOKIE['txt'])) {
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard') ?>">Home</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo base_url('admin/' . $this->uri->segment(2)) ?>"><?php echo ucfirst(str_replace('_', ' ', $this->uri->segment(2))) ?></a></li>
-                <li class="breadcrumb-item active"><?php echo character_limiter($title, 10) ?></li>
+                <li class="breadcrumb-item active <?= $txt800 ?>"><?php echo character_limiter($title, 10) ?></li>
               </ol>
             </div>
           </div>

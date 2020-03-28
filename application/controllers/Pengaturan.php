@@ -6,12 +6,12 @@ class Pengaturan extends CI_Controller
   {
     parent::__construct();
     $this->load->model('m_auth');
-    $this->load->model('m_pengaturan');
   }
 
   public function index()
   {
-    $this->load->view('admin/pengaturan/index');
+    $data['title'] = 'Pengaturan';
+    $this->load->view('admin/pengaturan/index', $data);
   }
 
   public function light()
@@ -25,6 +25,7 @@ class Pengaturan extends CI_Controller
     delete_cookie('b_gd');
     delete_cookie('btn_d');
     delete_cookie('btn_wr');
+    delete_cookie('tbl_drk');
     redirect(base_url('admin/pengaturan'));
   }
 
@@ -39,15 +40,8 @@ class Pengaturan extends CI_Controller
     set_cookie('b_gd', 'bg-gradient-dark', time() + (86400 * 30 * 6));
     set_cookie('btn_d', 'btn-dark', time() + (86400 * 30 * 6));
     set_cookie('btn_wr', 'btn-warning', time() + (86400 * 30 * 6));
+    set_cookie('tbl_drk', 'table-dark', time() + (86400 * 30 * 6));
     redirect(base_url('admin/pengaturan'));
   }
 
-  public function semester()
-  {
-    $pengaturan = $this->m_pengaturan;
-    if ($pengaturan->new_smt()) {
-      $this->session->set_flashdata('success', 'Semua data telah dihapus, Selamat Datang di Semester Baru');
-      redirect(base_url('admin/pengaturan'));
-    }
-  }
 }

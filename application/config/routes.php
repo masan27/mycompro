@@ -52,3 +52,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'login';
 $route['404_override'] = 'home/oops';
 $route['translate_uri_dashes'] = FALSE;
+
+//? Ganti Tema
+$route['admin/pengaturan'] = 'pengaturan/index';
+$route['admin/pengaturan/light'] = 'pengaturan/light';
+$route['admin/pengaturan/dark'] = 'pengaturan/dark';
