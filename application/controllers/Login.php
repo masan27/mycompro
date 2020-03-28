@@ -1,8 +1,7 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller
-{
+class Login extends CI_Controller {
 
 	// load model
 	public function __construct()
@@ -15,22 +14,22 @@ class Login extends CI_Controller
 	public function index()
 	{
 		// Validasi input
-		$model = $this->m_kelas;
-		$validation = $this->form_validation;
-		$validation->set_rules($model->rules());
+		$this->form_validation->set_rules('username','Username','required',
+			array(	'required'	=> '%s harus diisi'));
 
-		if ($this->form_validation->run()) {
-			$post = $this->input->post();
+		$this->form_validation->set_rules('password','Password','required',
+			array(	'required'	=> '%s harus diisi'));
 
-			$user = $post('username');
-			$pass = $post('password');
+		if($this->form_validation->run()) {
+			$username 	= strip_tags($this->input->post('username'));
+			$password 	= strip_tags($this->input->post('password'));
 			// Proses ke simple login
-			$this->simple_login->login($user, $pass);
+			$this->simple_login->login($username,$password);
 		}
 		// End validasi
 
-		$data = array('title'		=> 'Halaman Login');
-		$this->load->view('login/list', $data, FALSE);
+		$data = array(	'title'		=> 'Halaman Login');
+		$this->load->view('v_login', $data);
 	}
 
 	// Logout
@@ -39,6 +38,7 @@ class Login extends CI_Controller
 		// Panggil library logout
 		$this->simple_login->logout();
 	}
+
 }
 
 /* End of file Login.php */

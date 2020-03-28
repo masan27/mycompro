@@ -7,7 +7,8 @@ class Website
 
 	public function __construct()
 	{
-        $this->CI =& get_instance();
+		$this->CI =& get_instance();
+		$this->CI->load->model('konfigurasi_model');		
 	}
 
 	// Sitename
@@ -21,7 +22,7 @@ class Website
 	public function logo()
 	{
 		$site 	= $this->CI->konfigurasi_model->listing();
-		$logo 	= base_url('assets/upload/image/'.$site->logo);
+		$logo 	= base_url('assets/pendukung/'.$site->logo);
 		return $logo;
 	}
 
@@ -29,7 +30,7 @@ class Website
 	public function icon()
 	{
 		$site 	= $this->CI->konfigurasi_model->listing();
-		$icon 	= base_url('assets/upload/image/'.$site->icon);
+		$icon 	= base_url('assets/pendukung/'.$site->icon);
 		return $icon;
 	}
 

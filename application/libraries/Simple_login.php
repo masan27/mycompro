@@ -3,20 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Simple_login
 {
-	protected $CI;
+	// protected $CI;
 
 	public function __construct()
 	{
         $this->CI =& get_instance();
         // load user model
-        $this->CI->load->model('user_model');
+        $this->CI->load->model('m_login');
 	}
 
 	// Fungsi login
 	public function login($username,$password)
 	{
 		// Check user yang login
-		$user_login = $this->CI->user_model->login($username,$password);
+		$user_login = $this->CI->m_login->login($username,$password);
 		// Kalau ada, maka masuk ke halaman dashboard
 		if($user_login) {
 			$id_user 		= $user_login->id_user;
@@ -45,7 +45,7 @@ class Simple_login
 			}
 		}else{
 			// Kalau ga ada user yg cocok, suruh login lagi
-			$this->CI->session->set_flashdata('warning', 'Username/password salah');
+			$this->CI->session->set_flashdata('error', 'Username/Password salah');
 			redirect(base_url('login'),'refresh');
 		}
 	}

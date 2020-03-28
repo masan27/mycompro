@@ -26,14 +26,21 @@ if (isset($_COOKIE['txt'])) {
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title><?php echo SITE_NAME ?> - Login</title>
+	<title><?php echo $title ?></title>
 
 	<!-- Custom fonts for this template-->
+	<link rel="shortcut icon" href="<?php echo $this->website->icon(); ?>">
 	<link href="<?php echo base_url('assets/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 	<!-- Custom styles for this template-->
-	<link href="<?php echo base_url('css/sb-admin-2.min.css') ?>" rel="stylesheet">
+	<?php
+	$css = 'sb-admin-2.min.css';
+	if (isset($_COOKIE['txt'])) {
+		$css = 'dark-sb-admin-2.min.css';
+	}
+	?>
+	<link href="<?php echo base_url('css/' . $css) ?>" rel="stylesheet">
 
 	<style>
 		.main-cnt-judul {
@@ -77,14 +84,13 @@ if (isset($_COOKIE['txt'])) {
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="hh">
-				<img src="<?= base_url('assets/pendukung/logo_awal.png') ?>" class="img img-responsive logo-app" alt="My-Logo">
-				<span class="judul-app">Sistem Antrian Perizinan Berusaha</span>
-				<!-- <small class="sub-judul-app">Badan Koordinasi Penanaman Modal</small> -->
+				<img src="<?= $this->website->icon() ?>" alt="<?= $this->website->namaweb() ?>" class="img img-responsive logo-app" alt="My-Logo">
+				<span class="judul-app"><?= $this->website->namaweb() ?></span>				
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-xl-5 col-lg-6 col-md-9">
-				<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card o-hidden border-0 shadow-lg my-2">
 					<?php if ($this->session->flashdata('success')) : ?>
 						<div class="alert alert-success alert-dismissible fade show" role="alert">
 							<?php echo $this->session->flashdata('success'); ?>
@@ -100,25 +106,26 @@ if (isset($_COOKIE['txt'])) {
 									<div class="text-center">
 										<h1 class="h4 <?= $txt ?> mb-4">LOGIN</h1>
 									</div>
-									<form class="user" method="POST" action="<?php echo base_url('login/proses_login') ?>">
+									<form class="user" method="POST" action="<?php echo base_url('login') ?>">
 										<div class="form-group">
-											<input type="text" class="form-control form-control-user" id="username" name="username" placeholder="NIM">
+											<input type="text" class="form-control form-control-user <?php echo form_error('username') ? 'is-invalid' : '' ?>" id="username" name="username" placeholder="NIM">
+											<div class="invalid-feedback">
+												<?php echo form_error('username') ?>
+											</div>
 										</div>
 										<div class="form-group">
-											<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
+											<input type="password" class="form-control form-control-user <?php echo form_error('password') ? 'is-invalid' : '' ?>" id="password" name="password" placeholder="Password">
+											<div class="invalid-feedback">
+												<?php echo form_error('password') ?>
+											</div>
 										</div>
 										<div class="form-group">
 											<button type="submit" class="btn <?= $btn_wr ?> btn-user btn-block">Login</button>
 										</div>
-										<?php if (isset($this->session->gagal)) { ?>
-											<div class="form-group">
-												<a href="#!" data-toggle="modal" data-target="#notifModal">Tidak bisa login???</a>
-											</div>
-										<?php } ?>
 
-										<?php if ($this->session->flashdata('message')) : ?>
+										<?php if ($this->session->flashdata('error')) : ?>
 											<div class="alert alert-danger alert-dismissible fade show" role="alert">
-												<?php echo $this->session->flashdata('message'); ?>
+												<?php echo $this->session->flashdata('error'); ?>
 												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
@@ -136,7 +143,7 @@ if (isset($_COOKIE['txt'])) {
 	</div>
 
 	<!-- Get Modal-->
-	<?php $this->load->view("admin/_partials/modal.php") ?>
+	<?php $this->load->view("admin/layout/modal.php") ?>
 
 	<!-- Bootstrap core JavaScript-->
 	<script type="text/javascript" defer src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>

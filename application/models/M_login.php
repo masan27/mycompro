@@ -30,6 +30,23 @@ class M_login extends CI_Model
 		];
 	}
 
+	public function login($username,$password)
+	{
+		$this->db->select('users.*,
+							bagian.nama_bagian');
+		$this->db->from('users');
+		// join
+		$this->db->join('bagian', 'bagian.id_bagian = users.id_bagian', 'left');
+		// End join
+		// where
+		$this->db->where(array(	'username'	=> $username,
+								'password'	=> sha1($password)
+							));
+		$this->db->order_by('users.id_user', 'desc');
+		$query = $this->db->get();
+		return $query->row();
+	}
+
 	public function cek_user($table, $where)
 	{		
 		$query = $this->db->get_where($table, $where);
