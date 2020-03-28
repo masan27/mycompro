@@ -123,9 +123,9 @@ if (isset($_COOKIE['txt'])) {
 											<button type="submit" class="btn <?= $btn_wr ?> btn-user btn-block">Login</button>
 										</div>
 
-										<?php if ($this->session->flashdata('error')) : ?>
+										<?php if ($this->session->flashdata('warning')) : ?>
 											<div class="alert alert-danger alert-dismissible fade show" role="alert">
-												<?php echo $this->session->flashdata('error'); ?>
+												<?php echo $this->session->flashdata('warning'); ?>
 												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
@@ -143,7 +143,7 @@ if (isset($_COOKIE['txt'])) {
 	</div>
 
 	<!-- Get Modal-->
-	<?php $this->load->view("admin/layout/modal.php") ?>
+	<?php $this->load->view("admin/_partials/modal.php") ?>
 
 	<!-- Bootstrap core JavaScript-->
 	<script type="text/javascript" defer src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>

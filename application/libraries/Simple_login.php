@@ -25,12 +25,14 @@ class Simple_login
 			$username 		= $username;
 			$nama 			= $user_login->nama;
 			$akses_level 	= $user_login->akses_level;
+			$foto			= $user_login->gambar;
 			// Create session utk login
 			$this->CI->session->set_userdata('id_user',$id_user);
 			$this->CI->session->set_userdata('id_bagian',$id_bagian);
 			$this->CI->session->set_userdata('nama_bagian',$nama_bagian);
 			$this->CI->session->set_userdata('username',$username);
 			$this->CI->session->set_userdata('nama',$nama);
+			$this->CI->session->set_userdata('foto',$foto);
 			$this->CI->session->set_userdata('akses_level',$akses_level);
 			// Lalu redirect masuk ke halaman dashboard
 			$this->CI->session->set_flashdata('sukses', 'Anda berhasil login');
@@ -41,11 +43,11 @@ class Simple_login
 				redirect($pengalihan,'refresh');
 			}else{
 				// Jika ga ada, default masuk ke halaman dasbor
-				redirect(base_url('admin/dasbor'),'refresh');
+				redirect(base_url('admin/dashboard'),'refresh');
 			}
 		}else{
 			// Kalau ga ada user yg cocok, suruh login lagi
-			$this->CI->session->set_flashdata('error', 'Username/Password salah');
+			$this->CI->session->set_flashdata('warning', 'Username/Password salah');
 			redirect(base_url('login'),'refresh');
 		}
 	}
