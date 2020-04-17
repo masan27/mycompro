@@ -360,6 +360,7 @@ class Berita_model extends CI_Model {
 	public function edit($data) {
 		$this->db->where('id_berita',$data['id_berita']);
 		$this->db->update('berita',$data);
+		// $this->db->last_query();
 	}
 
 	// Edit hit

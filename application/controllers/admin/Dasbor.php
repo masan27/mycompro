@@ -7,10 +7,10 @@ class Dasbor extends CI_Controller {
 	{
 		parent::__construct();
 		// Tambahkan proteksi halaman
-		$url_pengalihan = str_replace('index.php/', '', current_url());
+		$url_pengalihan = str_replace(base_url(), '', current_url());
 		$pengalihan 	= $this->session->set_userdata('pengalihan',$url_pengalihan);
 		// Ambil check login dari simple_login
-		$this->simple_login->check_login($pengalihan);
+		$this->load->model('m_auth');
 		$this->load->model('client_model');
 		$this->load->model('staff_model');
 		$this->load->model('client_model');
@@ -26,10 +26,9 @@ class Dasbor extends CI_Controller {
 
 		$data = array(	'title'					=> 'Halaman Dasbor',
 						'client'				=> $client,
-						'staff'					=> $staff,
-						'isi'					=> 'admin/dasbor/list'
+						'staff'					=> $staff
 					);
-		$this->load->view('admin/layout/wrapper', $data, FALSE);
+		$this->load->view('admin/dashboard/index', $data, FALSE);
 	}
 
 }

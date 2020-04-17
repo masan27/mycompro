@@ -28,8 +28,8 @@ class Login extends CI_Controller {
 		}
 		// End validasi
 
-		$data = array(	'title'		=> 'Halaman Login');
-		$this->load->view('login/list', $data);
+		$data = array(	'title'		=> 'Login '.$this->website->namaweb());
+		$this->load->view('v_login', $data);
 	}
 
 	// Logout

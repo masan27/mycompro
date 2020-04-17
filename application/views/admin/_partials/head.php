@@ -57,6 +57,14 @@ if (isset($_COOKIE['txt'])) {
     min-height: 80px;
     background: #fff;
 }
+.logo-app {
+			display: block;
+			max-width: 50%;
+			height: auto;
+			margin: 0 auto;
+			padding-bottom: 10px;
+			margin-top: 10px;
+		}
 </style>
 <!-- <i class="fa fa_spinner fa_spin"></i> -->
 <div id="loading" style="transition: opacity 2s;"></div>

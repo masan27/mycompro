@@ -79,7 +79,7 @@ if (isset($_COOKIE['txt'])) {
             <!-- </div> -->
             <div class="card-body">
               <?php
-              $model = $this->m_dashboard;
+              $model = $this->dasbor_model;
               ?>
               <div class="row">
                 <div class="col-xl-4 col-md-6 mb-4">
@@ -88,7 +88,7 @@ if (isset($_COOKIE['txt'])) {
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            <h2>Berita<h2>
+                            <h2>Konten<h2>
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $model->berita()->total; ?>
                             <small>Post</small></div>

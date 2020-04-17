@@ -68,29 +68,6 @@ if (isset($_COOKIE['txt'])) {
   </div>
 </div>
 
-<!-- Notification-->
-<div class="modal fade" id="notifModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog <?= $bg . ' ' . $txt ?>" role="document">
-    <div class="modal-content <?= $bg . ' ' . $txt ?>">
-      <div class="modal-header <?= $bg . ' ' . $txt ?>">
-        <h5 class="modal-title <?= $bg . ' ' . $txt ?>" id="exampleModalLabel">Hei <?= $this->session->nama ?> kamu mengalami kesulitan melakukan login?? <br> Silahkan Hubungi Kami..</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-          <span class="<?= $txt ?>" aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body <?= $bg . ' ' . $txt ?>">
-        <ol>
-          <li>Bu Rusma <a href="https://api.whatsapp.com/send?phone=6285715980304"> <img class="img-profile rounded-circle" src="<?php echo base_url('img/web-whatsapp.png') ?>" width="7%">Whatsapp </a></li>
-          <li>Sian27 <a href="https://api.whatsapp.com/send?phone=6283893361181"> <img class="img-profile rounded-circle" src="<?php echo base_url('img/web-whatsapp.png') ?>" width="7%">Whatsapp </a></li>
-        </ol>
-      </div>
-      <div class="modal-footer <?= $bg . ' ' . $txt ?>">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Tutup</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Belum Bisa Login -->
 <div class="modal fade" id="belumModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog <?= $bg . ' ' . $txt ?>" role="document">

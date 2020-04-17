@@ -44,7 +44,7 @@ class User_model extends CI_Model {
 		// End join
 		// where
 		$this->db->where(array(	'username'	=> $username,
-								'password'	=> sha1($password)
+								'password'	=> sha1('thecroc '.$password)
 							));
 		$this->db->order_by('users.id_user', 'desc');
 		$query = $this->db->get();

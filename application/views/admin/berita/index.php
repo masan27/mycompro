@@ -68,13 +68,13 @@ if (isset($_COOKIE['txt'])) {
             </div>
           </div>
 
+          <?php
+          $site   = $this->konfigurasi_model->listing();
+          echo form_open(base_url('admin/berita/proses'));
+          ?>
           <!-- DataTales -->
           <div class="card shadow mb-4 <?= $bg_s . ' ' . $txt ?>">
             <div class="card-header py-3 <?= $bg_d ?>">
-              <?php
-              $site   = $this->m_konfig->listing();
-              echo form_open(base_url('admin/berita/proses'));
-              ?>
               <p class="btn-group">
                 <a href="<?php echo base_url('admin/berita/tambah') ?>" class="btn btn-success btn-lg">
                   <i class="fa fa-plus"></i> Tambah Berita/Profil</a>
@@ -101,16 +101,17 @@ if (isset($_COOKIE['txt'])) {
             </div>
             <div class="card-body">
               <?php
-              $model = $this->m_berita;
+              $model = $this->berita_model;
               ?>
               <div class="table-responsive mailbox-messages">
-                <table id="example1" class="<?= $txt.' '.$tbl_drk ?> display table table-bordered table-hover" cellspacing="0" width="100%">
+                <table id="dataTable" class="<?= $txt . ' ' . $tbl_drk ?> display table table-bordered table-hover" cellspacing="0" width="100%">
                   <thead>
                     <tr>
                       <th width="5%">
                         <div class="mailbox-controls">
                           <!-- Check all button -->
-                          <button type="button" class="btn btn-default btn-xs checkbox-toggle"><i class="fa fa-square-o"></i>
+                          <button type="button" class="btn btn-light btn-xs checkbox-toggle">
+                            <i class="fa fa-square"></i>
                           </button>
                         </div>
                       </th>
@@ -138,9 +139,9 @@ if (isset($_COOKIE['txt'])) {
                         </td>
                         <td>
                           <?php if ($berita->gambar != "") { ?>
-                            <img src="<?php echo base_url('assets/upload/image/thumbs/' . $berita->gambar) ?>" class="img img-thumbnail img-responsive" width="60">
+                            <img src="<?php echo base_url('upload/image/thumbs/' . $berita->gambar) ?>" class="img img-thumbnail img-responsive" width="60">
                           <?php } else { ?>
-                            <img src="<?php echo base_url('assets/upload/image/thumbs/' . $site->icon) ?>" class="img img-thumbnail img-responsive" width="60">
+                            <img src="<?php echo base_url('upload/image/thumbs/' . $site->icon) ?>" class="img img-thumbnail img-responsive" width="60">
                           <?php } ?>
                         </td>
                         <td>
@@ -162,7 +163,7 @@ if (isset($_COOKIE['txt'])) {
                         <td class="text-center <?= $txt_wr ?>"><?php echo $berita->jenis_berita ?></td>
                         <td class="text-center <?= $txt_wr ?>"><?php echo $berita->status_berita ?></td>
                         <td class="text-center <?= $txt_wr ?>"><?php echo $berita->nama ?></td>
-                        <td class= text-center">
+                        <td class=text-center">
                           <div class="btn-group">
                             <a href="<?php echo base_url('berita/read/' . $berita->slug_berita) ?>" class="btn btn-success btn-xs" target="_blank"><i class="fa fa-eye"></i></a>
 
@@ -179,9 +180,9 @@ if (isset($_COOKIE['txt'])) {
                   </tbody>
                 </table>
               </div>
-              <?php echo form_close(); ?>
             </div>
           </div>
+          <?php echo form_close(); ?>
 
         </div>
         <!-- /.container-fluid -->

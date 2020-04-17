@@ -71,37 +71,10 @@ if (isset($_COOKIE['txt'])) {
           <!-- DataTales -->
           <div class="card shadow mb-4 <?= $bg_s . ' ' . $txt ?>">
             <div class="card-header py-3 <?= $bg_d ?>">
-              <?php
-              $site   = $this->m_konfig->listing();
-              echo form_open(base_url('admin/berita/proses'));
-              ?>
-              <p class="btn-group">
-                <a href="<?php echo base_url('admin/berita/tambah') ?>" class="btn btn-success btn-lg">
-                  <i class="fa fa-plus"></i> Tambah Berita/Profil</a>
-
-                <button class="btn btn-warning" type="submit" name="draft" onClick="check();">
-                  <i class="fa fa-times"></i> Jangan Publikasikan
-                </button>
-
-                <button class="btn btn-primary" type="submit" name="publish" onClick="check();">
-                  <i class="fa fa-check"></i> Publikasikan
-                </button>
-
-                <button class="btn btn-danger" type="submit" name="hapus" onClick="check();">
-                  <i class="fa fa-trash-o"></i> Hapus
-                </button>
-                <?php
-                $url_navigasi = $this->uri->segment(2);
-                if ($this->uri->segment(3) != "") {
-                ?>
-                  <a href="<?php echo base_url('admin/' . $url_navigasi) ?>" class="btn btn-primary">
-                    <i class="fa fa-backward"></i> Kembali</a>
-                <?php } ?>
-              </p>
             </div>
             <div class="card-body">
               <?php
-              $model = $this->m_berita;
+              $model = $this->berita_model;
               ?>
               <?php
               // Validasi error
@@ -123,8 +96,8 @@ if (isset($_COOKIE['txt'])) {
                 <div class="col-md-8">
 
                   <div class="form-group form-group-lg">
-                    <label>Judul berita/profil/layanan</label>
-                    <input type="text" name="judul_berita" class="form-control" placeholder="Judul berita/profil/layanan" required="required" value="<?php echo set_value('judul_berita') ?>">
+                    <label>Judul Konten</label>
+                    <input type="text" name="judul_berita" class="form-control" placeholder="Judul Konten" required="required" value="<?php echo set_value('judul_berita') ?>">
                   </div>
 
                 </div>
@@ -132,8 +105,8 @@ if (isset($_COOKIE['txt'])) {
                 <div class="col-md-4">
 
                   <div class="form-group form-group-lg">
-                    <label>Icon berita/profil/layanan</label>
-                    <input type="text" name="icon" class="form-control" placeholder="Icon berita/profil/layanan" value="<?php echo set_value('icon') ?>">
+                    <label>Icon Konten</label>
+                    <input type="text" name="icon" class="form-control" placeholder="Icon Konten" value="<?php echo set_value('icon') ?>">
                   </div>
 
                 </div>
@@ -167,7 +140,7 @@ if (isset($_COOKIE['txt'])) {
                 <div class="col-md-6">
 
                   <div class="form-group form-group-lg">
-                    <label>Status Berita</label>
+                    <label>Status Konten</label>
                     <select name="status_berita" class="form-control">
                       <option value="Publish">Publikasikan</option>
                       <option value="Draft">Simpan sebagai draft</option>}
@@ -179,7 +152,7 @@ if (isset($_COOKIE['txt'])) {
                 <div class="col-md-3">
 
                   <div class="form-group">
-                    <label>Jenis Berita</label>
+                    <label>Jenis Konten</label>
                     <select name="jenis_berita" class="form-control">
                       <option value="Berita">Berita</option>
                       <option value="Profil">Profil</option>
@@ -194,7 +167,7 @@ if (isset($_COOKIE['txt'])) {
                 <div class="col-md-3">
 
                   <div class="form-group">
-                    <label>Kategori Berita</label>
+                    <label>Kategori Konten</label>
                     <select name="id_kategori" class="form-control">
 
                       <?php foreach ($kategori as $kategori) { ?>
@@ -230,7 +203,7 @@ if (isset($_COOKIE['txt'])) {
                   </div>
 
                   <div class="form-group">
-                    <label>Isi berita
+                    <label>Isi Konten
 
                       <sup>
                         <a data-toggle="modal" class="btn btn-info btn-xs" href="<?php echo base_url('admin/berita/files') ?>" data-target="#file"><i class="fa fa-download"></i> Attach File</a>
@@ -241,9 +214,14 @@ if (isset($_COOKIE['txt'])) {
                     <textarea name="isi" class="form-control" id="isi" placeholder="Isi berita"><?php echo set_value('isi') ?></textarea>
                   </div>
 
-                  <div class="form-group text-right">
+                  <div class="form-group text-right ">
                     <button type="submit" name="submit" class="btn btn-success btn-lg"><i class="fa fa-save"></i> Simpan Data</button>
-                    <input type="reset" name="reset" class="btn btn-default btn-lg" value="Reset">
+                    <a href="<?= base_url('admin/berita') ?>" class="btn btn-default btn-lg <?= $bg_d . ' ' . $txt ?>">
+                      <span class="icon text-white-50">
+                        <i class="fas fa-window-close"></i>
+                      </span>
+                      <span class="text">Tutup</span>
+                    </a>
                   </div>
 
                 </div>
