@@ -34,29 +34,6 @@ class Berita extends CI_Controller
 		$this->load->view('admin/berita/index', $data, FALSE);
 	}
 
-	// Halaman download
-	public function files()
-	{
-		$download = $this->download_model->listing();
-		$data = array(
-			'title'			=> 'Download',
-			'download'		=> $download
-		);
-		$this->load->view('admin/berita/files', $data, FALSE);
-	}
-
-	// Halaman download
-	public function gambar()
-	{
-		$galeri = $this->galeri_model->listing();
-		$data = array(
-			'title'			=> 'Galeri',
-			'galeri'		=> $galeri
-		);
-		$this->load->view('admin/berita/gambar', $data, FALSE);
-	}
-
-
 	// Proses
 	public function proses()
 	{
@@ -143,7 +120,8 @@ class Berita extends CI_Controller
 
 		if ($valid->run()) {
 			if (!empty($_FILES['gambar']['name'])) {
-				$config['upload_path']   = base_url('/upload/image/');
+				$img_path = './upload/image/';
+				$config['upload_path']   = $img_path;
 				$config['allowed_types'] = 'gif|jpg|png|svg|jpeg';
 				$config['max_size']      = '12000'; // KB  (MAX 12MB)
 				$this->load->library('upload', $config);
@@ -161,8 +139,8 @@ class Berita extends CI_Controller
 					$upload_data        		= array('uploads' => $this->upload->data());
 					// Image Editor
 					$config['image_library']  	= 'gd2';
-					$config['source_image']   	= base_url('upload/image/' . $upload_data['uploads']['file_name']);
-					$config['new_image']     	= base_url('upload/image/thumbs/');
+					$config['source_image']   	= $img_path . $upload_data['uploads']['file_name'];
+					$config['new_image']     	= $img_path . 'thumbs/';
 					$config['create_thumb']   	= TRUE;
 					$config['quality']       	= "100%";
 					$config['maintain_ratio']   = TRUE;
@@ -172,7 +150,17 @@ class Berita extends CI_Controller
 					$config['y_axis']       	= 0;
 					$config['thumb_marker']   	= '';
 					$this->load->library('image_lib', $config);
-					$this->image_lib->resize();
+					if (!$this->image_lib->resize()) {
+						$data = array(
+							'title'			=> 'Tambah Konten',
+							'kategori'		=> $kategori,
+							'error'    		=> $this->image_lib->display_errors()
+						);
+						$this->load->view('admin/berita/tambah', $data, FALSE);
+					}
+				}
+
+				if ($this->upload->do_upload('gambar') && $this->image_lib->resize()) {
 
 					$i 		= $this->input;
 					$slug 	= url_title($i->post('judul_berita'), 'dash', TRUE);
@@ -222,13 +210,14 @@ class Berita extends CI_Controller
 				$this->session->set_flashdata('success', 'Data telah ditambah');
 				redirect(base_url('admin/berita/jenis_berita/' . $i->post('jenis_berita')), 'refresh');
 			}
+		} else {
+			// End masuk database
+			$data = array(
+				'title'			=> 'Tambah Konten',
+				'kategori'		=> $kategori
+			);
+			$this->load->view('admin/berita/tambah', $data, FALSE);
 		}
-		// End masuk database
-		$data = array(
-			'title'			=> 'Tambah Konten',
-			'kategori'		=> $kategori
-		);
-		$this->load->view('admin/berita/tambah', $data, FALSE);
 	}
 
 	// Edit berita
@@ -271,10 +260,9 @@ class Berita extends CI_Controller
 						'title'			=> 'Edit Konten',
 						'kategori'		=> $kategori,
 						'berita'		=> $berita,
-						'error'    		=> $this->upload->display_errors(),
-						'isi'			=> 'admin/berita/edit'
+						'error'    		=> $this->upload->display_errors()
 					);
-					$this->load->view('admin/layout/wrapper', $data, FALSE);
+					$this->load->view('admin/berita/edit', $data, FALSE);
 					// Masuk database
 				} else {
 					$upload_data        		= array('uploads' => $this->upload->data());
@@ -292,6 +280,18 @@ class Berita extends CI_Controller
 					$config['thumb_marker']   	= '';
 					$this->load->library('image_lib', $config);
 					$this->image_lib->resize();
+
+					if (!$this->image_lib->resize()) {
+						$data = array(
+							'title'			=> 'Edit Konten',
+							'kategori'		=> $kategori,
+							'error'    		=> $this->image_lib->display_errors()
+						);
+						$this->load->view('admin/berita/edit', $data, FALSE);
+					}
+				}
+
+				if ($this->upload->do_upload('gambar') && $this->image_lib->resize()) {
 
 					//Hapus gambar
 					if ($berita->gambar != "") {
@@ -346,17 +346,16 @@ class Berita extends CI_Controller
 				);
 				$this->berita_model->edit($data);
 				$this->session->set_flashdata('success', 'Data telah diedit');
-				redirect(base_url('admin/berita/jenis_berita/' . $i->post('jenis_berita')), 'refresh');
+				redirect(base_url('admin/berita'), 'refresh');
 			}
 		}
 		// End masuk database
 		$data = array(
 			'title'			=> 'Edit Konten',
 			'kategori'		=> $kategori,
-			'berita'		=> $berita,
-			'isi'			=> 'admin/berita/edit'
+			'berita'		=> $berita
 		);
-		$this->load->view('admin/layout/wrapper', $data, FALSE);
+		$this->load->view('admin/berita/edit', $data, FALSE);
 	}
 
 

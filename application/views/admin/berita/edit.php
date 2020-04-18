@@ -78,7 +78,7 @@ if (isset($_COOKIE['txt'])) {
               ?>
               <?php
               // Validasi error
-              echo validation_errors('<div class="alert alert-warning">', '</div>');
+              echo validation_errors('<div class="alert alert-warning">', '</div>');              
 
               // Error upload
               if (isset($error)) {
@@ -88,16 +88,14 @@ if (isset($_COOKIE['txt'])) {
               }
 
               // Form open
-              echo form_open_multipart(base_url('admin/berita/tambah'));
+              echo form_open_multipart(base_url('admin/berita/edit/' . $berita->id_berita));
               ?>
-
               <div class="row">
-
                 <div class="col-md-8">
 
                   <div class="form-group form-group-lg">
                     <label>Judul Konten</label>
-                    <input type="text" name="judul_berita" class="form-control" placeholder="Judul Konten" required="required" value="<?php echo set_value('judul_berita') ?>">
+                    <input type="text" name="judul_berita" class="form-control" placeholder="Judul Konten" required="required" value="<?php echo set_value('judul_berita', $berita->judul_berita ) ?>">
                   </div>
 
                 </div>
@@ -106,7 +104,7 @@ if (isset($_COOKIE['txt'])) {
 
                   <div class="form-group form-group-lg">
                     <label>Icon Konten</label>
-                    <input type="text" name="icon" class="form-control" placeholder="Icon Konten" value="<?php echo set_value('icon') ?>">
+                    <input type="text" name="icon" class="form-control" placeholder="Icon Konten" value="<?php echo set_value('icon', $berita->icon ) ?>">
                   </div>
 
                 </div>
@@ -118,11 +116,11 @@ if (isset($_COOKIE['txt'])) {
                     <div class="row">
                       <div class="col-md-6">
                         <label>Tanggal Publish</label>
-                        <input type="text" name="tanggal_publish" class="form-control tanggal" placeholder="Tanggal publikasi" value="<?php echo set_value('tanggal_publish', date('Y-m-d')) ?>" data-date-format="dd-mm-yyyy">
+                        <input type="date" name="tanggal_publish" class="form-control tanggal" placeholder="Tanggal publikasi" value="<?php echo set_value('tanggal_publish', date('Y-m-d', strtotime($berita->tanggal_publish))) ?>" data-date-format="dd-mm-yyyy">
                       </div>
                       <div class="col-md-6">
                         <label>Jam Publish</label>
-                        <input type="text" name="jam_publish" class="form-control time-picker" placeholder="Jam publikasi" value="<?php echo set_value('jam_publish', date('H:i:s')) ?>">
+                        <input type="time" name="jam_publish" class="form-control time-picker" placeholder="Jam publikasi" value="<?php echo set_value('jam_publish', date('H:i:s', strtotime($berita->tanggal_publish)))  ?>">
                       </div>
                     </div>
                   </div>
@@ -135,7 +133,9 @@ if (isset($_COOKIE['txt'])) {
                     <label>Status Konten</label>
                     <select name="status_berita" class="form-control">
                       <option value="Publish">Publikasikan</option>
-                      <option value="Draft">Simpan sebagai draft</option>
+                      <option value="Draft" <?php if ($berita->status_berita == "Draft") {
+                                              echo "selected";
+                                            } ?>>Simpan sebagai draft</option>
                     </select>
 
                   </div>
@@ -147,14 +147,16 @@ if (isset($_COOKIE['txt'])) {
                     <label>Jenis Konten</label>
                     <select name="jenis_berita" class="form-control">
                       <option value="Berita">Berita</option>
-                      <option value="Profil">Profil</option>
-                      <option value="Layanan">Layanan</option>
+                      <option value="Profil" <?php if ($berita->jenis_berita == "Profil") {
+                                                echo "selected";
+                                              } ?>>Profil</option>
+                      <option value="Layanan" <?php if ($berita->jenis_berita == "Layanan") {
+                                                echo "selected";
+                                              } ?>>Layanan</option>
                     </select>
 
                   </div>
                 </div>
-
-
 
                 <div class="col-md-3">
 
@@ -163,7 +165,10 @@ if (isset($_COOKIE['txt'])) {
                     <select name="id_kategori" class="form-control">
 
                       <?php foreach ($kategori as $kategori) { ?>
-                        <option value="<?php echo $kategori->id_kategori ?>"><?php echo $kategori->nama_kategori ?></option>
+                        <option value="<?php echo $kategori->id_kategori ?>" <?php if ($berita->id_kategori == $kategori->id_kategori) {
+                                                                                echo "selected";
+                                                                              } ?>>
+                          <?php echo $kategori->nama_kategori ?></option>
                       <?php } ?>
 
                     </select>
@@ -173,7 +178,7 @@ if (isset($_COOKIE['txt'])) {
 
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label>Upload gambar</label>
+                    <label>Upload Gambar Baru</label>                    
                     <input type="file" name="gambar" class="form-control" placeholder="Upload gambar">
                   </div>
                 </div>
@@ -181,29 +186,25 @@ if (isset($_COOKIE['txt'])) {
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>Urutan</label>
-                    <input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo set_value('urutan') ?>">
+                    <input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo set_value('urutan', $berita->urutan ) ?>">
                   </div>
                 </div>
 
-
                 <div class="col-md-12">
-
 
                   <div class="form-group">
                     <label>Keywords dan Ringkasan (untuk pencarian Google)</label>
-                    <textarea name="keywords" class="form-control" placeholder="Keywords (untuk pencarian Google)"><?php echo set_value('keywords') ?></textarea>
+                    <textarea name="keywords" class="form-control" placeholder="Keywords (untuk pencarian Google)"><?php echo set_value('keyword', $berita->keywords) ?></textarea>
                   </div>
 
                   <div class="form-group">
-                    <label>Isi Konten
+                    <label>Isi berita <sup>
+                        <!-- <a data-toggle="modal" class="btn btn-info btn-xs" href="<?php echo base_url('admin/berita/files') ?>" data-target="#file"><i class="fa fa-download"></i> Attach File</a> -->
 
-                      <sup>
-                        <!-- <a data-toggle="modal" class="btn btn-info btn-sm" href="<?php echo base_url('admin/berita/files') ?>" data-target="#file"><i class="fa fa-download"></i> Attach File</a> -->
-
-                        <!-- <a data-toggle="modal" class="btn btn-info btn-sm" href="<?php echo base_url('admin/berita/gambar') ?>" data-target="#gambar"><i class="fa fa-download"></i> Attach Gambar</a> -->
+                        <!-- <a data-toggle="modal" class="btn btn-info btn-xs" href="<?php echo base_url('admin/berita/gambar') ?>" data-target="#gambar"><i class="fa fa-download"></i> Attach Gambar</a> -->
 
                       </sup></label>
-                    <textarea name="isi" class="form-control" id="isi" placeholder="Isi berita"><?php echo set_value('isi') ?></textarea>
+                    <textarea name="isi" class="form-control" id="isi" placeholder="Isi berita" placeholder="Isi berita"><?php echo $berita->isi ?></textarea>
                   </div>
 
                   <div class="form-group text-right ">
@@ -223,7 +224,7 @@ if (isset($_COOKIE['txt'])) {
                 echo form_close();
                 ?>               
 
-              </div>              
+              </div>
             </div>
           </div>
 
@@ -257,7 +258,7 @@ if (isset($_COOKIE['txt'])) {
   <script type="text/javascript" defer src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
   <script type="text/javascript" defer src="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.js') ?>"></script>
   <script type="text/javascript" defer src="<?php echo base_url('js/demo/datatables-demo.js') ?>"></script>
-  <script>    
+  <script>
     window.setTimeout(function() {
       $(".alert").fadeTo(5000, 0).slideUp(500, function() {
         $(this).remove();
