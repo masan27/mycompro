@@ -35,7 +35,6 @@ class Kategori_model extends CI_Model {
 		$this->db->where('id_kategori',$id_kategori);
 		$this->db->order_by('id_kategori','DESC');
 		$query = $this->db->get();
-		echo $this->db->last_query();
 		return $query->row();
 
 	}

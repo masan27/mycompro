@@ -24,7 +24,7 @@ class Dasbor extends CI_Controller {
 		$client 				= $this->client_model->listing();
 		$staff 					= $this->staff_model->listing();
 
-		$data = array(	'title'					=> 'Halaman Dasbor',
+		$data = array(	'title'					=> 'Halaman Dashboard',
 						'client'				=> $client,
 						'staff'					=> $staff
 					);

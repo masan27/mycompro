@@ -381,6 +381,75 @@ class Berita extends CI_Controller
 		$this->session->set_flashdata('success', 'Data telah dihapus');
 		redirect(base_url('admin/berita'), 'refresh');
 	}
+
+	// Index Kategori
+	public function kategori($id = false)
+	{
+		// Validasi
+		$valid = $this->form_validation;
+
+		$valid->set_rules(
+			'nama_kategori',
+			'Nama kategori',
+			'required|is_unique[kategori.nama_kategori]',
+			array(
+				'required'		=> 'Nama kategori harus diisi',
+				'is_unique'		=> 'Nama kategori sudah ada. Buat Nama kategori baru!'
+			)
+		);
+
+		if ($valid->run() === FALSE) {
+			// End validasi			
+
+			$data = array(
+				'title'		=> 'Kategori Konten',
+				'kategori'	=> $this->kategori_model->listing()
+			);
+			
+			// jika edit			
+			if ($id != false) {
+				$data = array(
+					'title'		=> 'Kategori Konten',
+					'kategori'	=> $this->kategori_model->listing(),
+					'edit' => $this->kategori_model->detail($id)
+				);
+			}			
+			$this->load->view('admin/kategori_berita/index', $data, FALSE);
+			// Proses masuk ke database
+		} else {
+			//jika edit
+			if ($id != false) {
+				$i 	= $this->input;
+				$slug 	= url_title($i->post('nama_kategori'), 'dash', TRUE);
+
+				$data = array(
+					'id_kategori'	=> $id,
+					'id_user'		=> $this->session->userdata('id_user'),
+					'nama_kategori'	=> $i->post('nama_kategori'),
+					'slug_kategori'	=> $slug
+				);
+				$this->kategori_model->edit($data);
+				$this->session->set_flashdata('sukses', 'Data telah diedit');
+				redirect(base_url('admin/kategori'), 'refresh');
+			}
+			// jika tambah
+			else {
+				$i 	= $this->input;
+				$slug 	= url_title($i->post('nama_kategori'), 'dash', TRUE);
+
+				$data = array(
+					'id_user'		=> $this->session->userdata('id_user'),
+					'nama_kategori'	=> $i->post('nama_kategori'),
+					'slug_kategori'	=> $slug
+				);
+
+				$this->kategori_model->tambah($data);
+				$this->session->set_flashdata('sukses', 'Data telah ditambah');
+				redirect(base_url('admin/kategori'), 'refresh');
+			}
+		}
+		// End proses masuk database		
+	}
 }
 
 /* End of file Berita.php */

@@ -77,19 +77,20 @@ if (isset($_COOKIE['txt'])) {
             <div class="card-header py-3 <?= $bg_d ?>">
               <p class="btn-group">
                 <a href="<?php echo base_url('admin/berita/tambah') ?>" class="btn btn-success btn-lg">
-                  <i class="fa fa-plus"></i> Tambah Berita/Profil</a>
+                  <i class="fa fa-plus"></i> Tambah Konten</a>
 
-                <button class="btn btn-warning" type="submit" name="draft" onClick="check();">
+                <button class="btn btn-warning" type="submit" name="draft">
                   <i class="fa fa-times"></i> Jangan Publikasikan
                 </button>
 
-                <button class="btn btn-primary" type="submit" name="publish" onClick="check();">
+                <button class="btn btn-primary" type="submit" name="publish">
                   <i class="fa fa-check"></i> Publikasikan
                 </button>
 
-                <button class="btn btn-danger" type="submit" name="hapus" onClick="check();">
-                  <i class="fa fa-trash-o"></i> Hapus
+                <button class="btn btn-danger" type="submit" name="hapus">
+                  <i class="fa fa-trash"></i> Hapus
                 </button>
+
                 <?php
                 $url_navigasi = $this->uri->segment(2);
                 if ($this->uri->segment(3) != "") {
@@ -98,6 +99,9 @@ if (isset($_COOKIE['txt'])) {
                     <i class="fa fa-backward"></i> Kembali</a>
                 <?php } ?>
               </p>
+              <a href="<?= base_url('admin/berita/kategori') ?>" class="btn btn-info btn-lg float-right">
+                <i class="fas fa-list-ul"></i> Kategori
+              </a>
             </div>
             <div class="card-body">
               <?php
