@@ -21,6 +21,11 @@ if (isset($_COOKIE['txt'])) {
 
 <head>
   <?php $this->load->view("admin/_partials/head.php") ?>
+  <style>
+    .custom-file-label{
+      top: 32px !important;
+    }
+  </style>
 </head>
 
 <body id="page-top">
@@ -67,42 +72,79 @@ if (isset($_COOKIE['txt'])) {
               </ol>
             </div>
           </div>
+
+          <!-- form tambah -->
+          <?php include('tambah.php') ?>
+          <!-- form edit -->
+          <?php include('edit.php') ?>
+
+          <?php
+          echo form_open(base_url('admin/galeri/proses'));
+          ?>
           <!-- DataTales -->
           <div class="card shadow mb-4 <?= $bg_s . ' ' . $txt ?>">
             <div class="card-header py-3 <?= $bg_d ?>">
-              <button class="btn btn-primary" data-toggle="modal" data-target="#Tambah">
-                <i class="fa fa-plus"></i> Tambah
-              </button>
+              <p class="btn-group">
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#Tambah">
+                  <i class="fa fa-plus"></i> Tambah Galeri
+                </button>
+
+                <button class="btn btn-danger" type="submit" name="hapus">
+                  <i class="fa fa-trash"></i> Hapus
+                </button>
+              </p>
+              <a href="<?= base_url('admin/berita/kategori') ?>" class="btn btn-info btn-lg float-right">
+                <i class="fas fa-list-ul"></i> Kategori
+              </a>
             </div>
             <div class="card-body">
-              <!-- form tambah -->
-              <?php include('tambah.php') ?>
-              <!-- form edit -->
-              <?php include('edit.php') ?>
               <div class="table-responsive">
-                <table id="dataTable" class="<?= $txt . ' ' . $tbl_drk ?> table table-bordered table-hover table-striped">
-                  <thead class="bordered-darkorange">
+                <table id="dataTable" class="<?= $txt . ' ' . $tbl_drk ?> display table table-bordered table-hover" cellspacing="0" width="100%">
+                  <thead>
                     <tr>
-                      <th>#</th>
-                      <th>Nama kategori</th>
-                      <th>Slug</th>
-                      <th>Action</th>
+                      <th>
+                        <div class="mailbox-controls">
+                          <!-- Check all button -->
+                          <button type="button" class="btn btn-dark btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                          </button>
+                        </div>
+                      </th>
+                      <th>Gambar</th>
+                      <th>Judul</th>
+                      <th>Kategori - Posisi</th>
+                      <th>Author</th>
+                      <th>Tanggal</th>
+                      <th width="15%">Action</th>
                     </tr>
                   </thead>
                   <tbody>
 
                     <?php $i = 1;
-                    foreach ($kategori as $kategori) { ?>
+                    foreach ($galeri as $galeri) { ?>
 
-                      <tr class="odd gradeX">
-                        <td><?php echo $i ?></td>
-                        <td><?php echo $kategori->nama_kategori ?></td>
-                        <td><?php echo $kategori->slug_kategori ?></td>
-                        <td align="center">
-                        <div class="btn-group">
-                          <a class="btn btn-warning" href="<?php echo base_url('admin/berita/kategori/' . $kategori->id_kategori) ?>"><i class="fa fa-edit"></i></a>
-                          <a href="<?php echo base_url('admin/kategori/delete/' . $kategori->id_kategori) ?>" class="btn btn-danger btn-xs " onclick="confirmation(event)"><i class="fa fa-trash"></i></a>
-                        </div>
+                      <tr>
+                        <td>
+                          <div class="mailbox-star text-center">
+                            <div class="text-center">
+                              <input type="checkbox" class="icheckbox_flat-blue " name="id_galeri[]" value="<?php echo $galeri->id_galeri ?>">
+                              <span class="checkmark"></span>
+                            </div>
+                        </td>
+                        <td>
+                          <img src="<?php echo base_url('assets/upload/image/thumbs/' . $galeri->gambar) ?>" width="60">
+                        </td>
+                        <td><?php echo $galeri->judul_galeri ?></td>
+                        <td><?php echo $galeri->nama_kategori_galeri ?> - <?php echo $galeri->jenis_galeri ?></td>
+                        <td><?php echo $galeri->nama ?></td>
+                        <td><?php echo $galeri->tanggal ?></td>
+                        <td class="text-center">
+                          <div class="btn-group">
+                            <!-- <a href="<?php echo base_url('galeri/read/' . $galeri->id_galeri) ?>" class="btn btn-success btn-xs" target="_blank"><i class="fa fa-eye"></i></a> -->
+
+                            <a href="<?php echo base_url('admin/galeri/' . $galeri->id_galeri) ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+
+                            <a href="<?php echo base_url('admin/galeri/delete/' . $galeri->id_galeri) ?>" class="btn btn-danger btn-xs " onclick="confirmation(event)"><i class="fa fa-trash"></i></a>
+                          </div>
                         </td>
                       </tr>
 
@@ -113,8 +155,8 @@ if (isset($_COOKIE['txt'])) {
                 </table>
               </div>
             </div>
-            <?php echo form_close(); ?>
           </div>
+          <?php echo form_close(); ?>
 
         </div>
         <!-- /.container-fluid -->
@@ -146,11 +188,10 @@ if (isset($_COOKIE['txt'])) {
   <script type="text/javascript" defer src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
   <script type="text/javascript" defer src="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.js') ?>"></script>
   <script type="text/javascript" defer src="<?php echo base_url('js/demo/datatables-demo.js') ?>"></script>
-
   <script>
     window.onload = function() {
       <?php if (isset($edit)) { ?>
-        $('#Edit').modal('show');        
+        $('#Edit').modal('show');
       <?php } ?>
       removeLoader();
     }
@@ -160,10 +201,22 @@ if (isset($_COOKIE['txt'])) {
       $('#deleteModal').modal();
     }
     window.setTimeout(function() {
-      $(".alert").fadeTo(5000, 0).slideUp(500, function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function() {
         $(this).remove();
       });
     }, 1000);
+
+    document.querySelector('.file-tambah').addEventListener('change', function(e) {
+      var fileName = document.getElementById("tambah_gambar").files[0].name;
+      var nextSibling = e.target.nextElementSibling
+      nextSibling.innerText = fileName
+    });
+
+    document.querySelector('.file-edit').addEventListener('change', function(e) {
+      var fileName = document.getElementById("edit_gambar").files[0].name;
+      var nextSibling = e.target.nextElementSibling
+      nextSibling.innerText = fileName
+    });
   </script>
 
 </body>

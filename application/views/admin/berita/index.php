@@ -107,15 +107,15 @@ if (isset($_COOKIE['txt'])) {
               <?php
               $model = $this->berita_model;
               ?>
-              <div class="table-responsive mailbox-messages">
+              <div class="table-responsive">
                 <table id="dataTable" class="<?= $txt . ' ' . $tbl_drk ?> display table table-bordered table-hover" cellspacing="0" width="100%">
                   <thead>
                     <tr>
                       <th width="5%">
                         <div class="mailbox-controls">
                           <!-- Check all button -->
-                          <button type="button" class="btn btn-light btn-xs checkbox-toggle">
-                            <i class="fa fa-square"></i>
+                          <button type="button" class="btn btn-dark btn-sm checkbox-toggle">
+                            <i class="far fa-square"></i>
                           </button>
                         </div>
                       </th>
@@ -133,7 +133,7 @@ if (isset($_COOKIE['txt'])) {
                     <?php $i = 1;
                     foreach ($berita as $berita) { ?>
 
-                      <tr class="odd gradeX">
+                      <tr>
                         <td>
                           <div class="mailbox-star text-center">
                             <div class="text-center">
@@ -158,7 +158,6 @@ if (isset($_COOKIE['txt'])) {
                             <?php if ($berita->jenis_berita == "Promo") { ?>
                               <br>Promo: <span class="text-danger"><strong><?php echo date('d M Y', strtotime($berita->tanggal_mulai)) ?> s/d <?php echo date('d M Y ', strtotime($berita->tanggal_selesai)) ?></strong></span>
                             <?php } ?>
-                            <br>Urutan: <?php echo $berita->urutan ?>
                             <br>Icon: <i class="<?php echo $berita->icon ?>"></i> <?php echo $berita->icon ?>
                             <br>Tgl posting: <?php echo date('d-m-Y', strtotime($berita->tanggal_publish)) ?>
                           </small>

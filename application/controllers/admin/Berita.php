@@ -15,7 +15,7 @@ class Berita extends CI_Controller
 		$this->log_user->add_log();
 		// Tambahkan proteksi halaman
 		$url_pengalihan = str_replace(base_url(), '', current_url());
-		$pengalihan 	= $this->session->set_userdata('pengalihan', $url_pengalihan);
+		$this->session->set_userdata('pengalihan', $url_pengalihan);
 		// Ambil check login dari simple_login
 		$this->simple_login->check_login();
 	}
