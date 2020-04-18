@@ -21,6 +21,11 @@ if (isset($_COOKIE['txt'])) {
 
 <head>
   <?php $this->load->view("admin/_partials/head.php") ?>
+  <style>
+    .custom-file-label{
+      top: 32px !important;
+    }
+  </style>
 </head>
 
 <body id="page-top">
@@ -171,19 +176,20 @@ if (isset($_COOKIE['txt'])) {
                   </div>
                 </div>
 
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>Upload gambar</label>
-                    <input type="file" name="gambar" class="form-control" placeholder="Upload gambar">
+                <div class="col-md-6">
+                  <div class="custom-file">
+                    <label>Upload Gambar</label>
+                    <input id="gambar" type="file" name="gambar" accept="image/*" class="custom-file-input" placeholder="Upload gambar">
+                    <label class="custom-file-label" for="gambar">Pilih Gambar</label>
                   </div>
                 </div>
 
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                   <div class="form-group">
                     <label>Urutan</label>
                     <input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo set_value('urutan') ?>">
                   </div>
-                </div>
+                </div> -->
 
 
                 <div class="col-md-12">
@@ -221,9 +227,9 @@ if (isset($_COOKIE['txt'])) {
                 <?php
                 // Form close
                 echo form_close();
-                ?>               
+                ?>
 
-              </div>              
+              </div>
             </div>
           </div>
 
@@ -257,12 +263,18 @@ if (isset($_COOKIE['txt'])) {
   <script type="text/javascript" defer src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
   <script type="text/javascript" defer src="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.js') ?>"></script>
   <script type="text/javascript" defer src="<?php echo base_url('js/demo/datatables-demo.js') ?>"></script>
-  <script>    
+  <script>
     window.setTimeout(function() {
       $(".alert").fadeTo(5000, 0).slideUp(500, function() {
         $(this).remove();
       });
     }, 1000);
+
+    document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+      var fileName = document.getElementById("gambar").files[0].name;
+      var nextSibling = e.target.nextElementSibling
+      nextSibling.innerText = fileName
+    });
   </script>
 
 </body>

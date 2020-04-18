@@ -21,6 +21,11 @@ if (isset($_COOKIE['txt'])) {
 
 <head>
   <?php $this->load->view("admin/_partials/head.php") ?>
+  <style>
+    .custom-file-label{
+      top: 32px !important;
+    }
+  </style>
 </head>
 
 <body id="page-top">
@@ -176,10 +181,11 @@ if (isset($_COOKIE['txt'])) {
                   </div>
                 </div>
 
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>Upload Gambar Baru</label>                    
-                    <input type="file" name="gambar" class="form-control" placeholder="Upload gambar">
+                <div class="col-md-6">
+                  <div class="custom-file">
+                    <label>Upload Gambar Baru</label>
+                    <input id="gambar" type="file" name="gambar" accept="image/*" class="custom-file-input" placeholder="Upload gambar">
+                    <label class="custom-file-label" for="gambar">Pilih Gambar</label>
                   </div>
                 </div>
 
@@ -264,6 +270,12 @@ if (isset($_COOKIE['txt'])) {
         $(this).remove();
       });
     }, 1000);
+
+    document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+      var fileName = document.getElementById("gambar").files[0].name;
+      var nextSibling = e.target.nextElementSibling
+      nextSibling.innerText = fileName
+    });
   </script>
 
 </body>
