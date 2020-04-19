@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller {
 		parent::__construct();
 		// Tambahkan proteksi halaman
 		$url_pengalihan = str_replace(base_url(), '', current_url());
-		$pengalihan 	= $this->session->set_userdata('pengalihan',$url_pengalihan);
+		$this->session->set_userdata('pengalihan',$url_pengalihan);
 		// Ambil check login dari simple_login
 		$this->load->model('m_auth');
 		$this->load->model('client_model');

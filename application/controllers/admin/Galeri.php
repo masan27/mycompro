@@ -10,12 +10,12 @@ class Galeri extends CI_Controller
 		parent::__construct();
 		$this->load->model('galeri_model');
 		$this->load->model('kategori_galeri_model');
-		$this->log_user->add_log();
 		// Tambahkan proteksi halaman
 		$url_pengalihan = str_replace(base_url(), '', current_url());
 		$this->session->set_userdata('pengalihan', $url_pengalihan);
 		// Ambil check login dari simple_login
 		$this->simple_login->check_login();
+		$this->log_user->add_log();
 	}
 
 	// Halaman galeri
@@ -254,7 +254,7 @@ class Galeri extends CI_Controller
 
 	// Delete
 	public function delete($id_galeri)
-	{		
+	{
 		$galeri = $this->galeri_model->detail($id_galeri);
 		// Proses hapus gambar
 		if ($galeri->gambar == "") {
@@ -267,6 +267,78 @@ class Galeri extends CI_Controller
 		$this->galeri_model->delete($data);
 		$this->session->set_flashdata('sukses', 'Data telah dihapus');
 		redirect(base_url('admin/galeri'), 'refresh');
+	}
+
+	// Kategori
+	public function kategori($id = false)
+	{
+		// Validasi
+		$valid = $this->form_validation;
+
+		$valid->set_rules(
+			'nama_kategori_galeri',
+			'Nama kategori_galeri',
+			'required|is_unique[kategori_galeri.nama_kategori_galeri]',
+			array(
+				'required'		=> 'Nama kategori_galeri harus diisi',
+				'is_unique'		=> 'Nama kategori_galeri sudah ada. Buat Nama kategori_galeri baru!'
+			)
+		);
+
+		if ($valid->run() === FALSE) {
+			// Cancel Proses and Showing Error's			
+
+			$data = array(
+				'title'				=> 'Kategori Galeri',
+				'kategori_galeri'	=> $this->kategori_galeri_model->listing()
+			);
+
+			if ($id != false) {
+				$data = array(
+					'title'				=> 'Kategori Galeri',
+					'kategori_galeri'	=> $this->kategori_galeri_model->listing(),
+					'edit'				=> $this->kategori_galeri_model->detail($id)
+				);
+			}
+			$this->load->view('admin/kategori_galeri/index', $data, FALSE);
+			// Proses masuk ke database
+		} else {
+			if ($id != false) {
+				$i 	= $this->input;
+				$slug 	= url_title($i->post('nama_kategori_galeri'), 'dash', TRUE);
+
+				$data = array(
+					'id_kategori_galeri'	=> $id,
+					'nama_kategori_galeri'	=> $i->post('nama_kategori_galeri'),
+					'slug_kategori_galeri'	=> $slug,
+					'urutan'		=> $i->post('urutan'),
+				);
+				$this->kategori_galeri_model->edit($data);
+				$this->session->set_flashdata('sukses', 'Data telah diedit');
+				redirect(base_url('admin/galeri/kategori'), 'refresh');
+			} else {
+				$i 	= $this->input;
+				$slug 	= url_title($i->post('nama_kategori_galeri'), 'dash', TRUE);
+
+				$data = array(
+					'nama_kategori_galeri'	=> $i->post('nama_kategori_galeri'),
+					'slug_kategori_galeri'	=> $slug,
+				);
+				$this->kategori_galeri_model->tambah($data);
+				$this->session->set_flashdata('sukses', 'Data telah ditambah');
+				redirect(base_url('admin/galeri/kategori'), 'refresh');
+			}
+		}
+	}
+
+	// Delete user
+	public function hapus_kategori($id_kategori_galeri)
+	{
+
+		$data = array('id_kategori_galeri'	=> $id_kategori_galeri);
+		$this->kategori_galeri_model->delete($data);
+		$this->session->set_flashdata('sukses', 'Data telah dihapus');
+		redirect(base_url('admin/galeri/kategori'), 'refresh');
 	}
 }
 

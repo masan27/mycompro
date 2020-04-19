@@ -12,12 +12,12 @@ class Berita extends CI_Controller
 		$this->load->model('kategori_model');
 		$this->load->model('download_model');
 		$this->load->model('galeri_model');
-		$this->log_user->add_log();
 		// Tambahkan proteksi halaman
 		$url_pengalihan = str_replace(base_url(), '', current_url());
 		$this->session->set_userdata('pengalihan', $url_pengalihan);
 		// Ambil check login dari simple_login
 		$this->simple_login->check_login();
+		$this->log_user->add_log();
 	}
 
 	// Halaman berita
@@ -449,6 +449,15 @@ class Berita extends CI_Controller
 			}
 		}
 		// End proses masuk database		
+	}
+
+	// Delete Kategori
+	public function hapus_kategori($id_kategori)
+	{		
+		$data = array('id_kategori'	=> $id_kategori);
+		$this->kategori_model->delete($data);
+		$this->session->set_flashdata('sukses', 'Data telah dihapus');
+		redirect(base_url('admin/galeri/kategori'), 'refresh');
 	}
 }
 

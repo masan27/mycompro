@@ -80,11 +80,11 @@ if (isset($_COOKIE['txt'])) {
               <!-- form edit -->
               <?php include('edit.php') ?>
               <div class="table-responsive">
-                <table id="dataTable" class="<?= $txt . ' ' . $tbl_drk ?> table table-bordered table-hover table-striped">
-                  <thead class="bordered-darkorange">
+                <table id="dataTable" class="<?= $txt . ' ' . $tbl_drk ?> table table-striped table-bordered table-hover">
+                  <thead>
                     <tr>
                       <th>#</th>
-                      <th>Nama kategori</th>
+                      <th>Nama Kategori</th>
                       <th>Slug</th>
                       <th>Action</th>
                     </tr>
@@ -92,15 +92,18 @@ if (isset($_COOKIE['txt'])) {
                   <tbody>
 
                     <?php $i = 1;
-                    foreach ($kategori as $kategori) { ?>
+                    foreach ($kategori_galeri as $kategori_galeri) { ?>
 
                       <tr class="odd gradeX">
                         <td><?php echo $i ?></td>
-                        <td><?php echo $kategori->nama_kategori ?></td>
-                        <td><?php echo $kategori->slug_kategori ?></td>
+                        <td><?php echo $kategori_galeri->nama_kategori_galeri ?></td>
+                        <td><?php echo $kategori_galeri->slug_kategori_galeri ?></td>
                         <td align="center">
-                          <a class="btn btn-warning" href="<?php echo base_url('admin/berita/kategori/' . $kategori->id_kategori) ?>"><i class="fa fa-edit"></i></a>
-                          <a href="<?php echo base_url('admin/kategori/delete/' . $kategori->id_kategori) ?>" class="btn btn-danger btn-xs " onclick="confirmation(event)"><i class="fa fa-trash"></i></a>
+                          <div class="btn-group">
+                            <a href="<?php echo base_url('admin/galeri/kategori/' . $kategori_galeri->id_kategori_galeri) ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+
+                            <a onclick="deleteConfirm('<?php echo base_url('admin/galeri/hapus_kategori/' . $kategori_galeri->id_kategori_galeri) ?>')" href="#!" class="btn btn-danger "><i class="fa fa-trash"></i></a>
+                          </div>
                         </td>
                       </tr>
 
@@ -148,7 +151,7 @@ if (isset($_COOKIE['txt'])) {
   <script>
     window.onload = function() {
       <?php if (isset($edit)) { ?>
-        $('#Edit').modal('show');        
+        $('#Edit').modal('show');
       <?php } ?>
       removeLoader();
     }

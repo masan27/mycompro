@@ -101,7 +101,7 @@ if (isset($_COOKIE['txt'])) {
                         <td align="center">
                         <div class="btn-group">
                           <a class="btn btn-warning" href="<?php echo base_url('admin/berita/kategori/' . $kategori->id_kategori) ?>"><i class="fa fa-edit"></i></a>
-                          <a href="<?php echo base_url('admin/kategori/delete/' . $kategori->id_kategori) ?>" class="btn btn-danger btn-xs " onclick="confirmation(event)"><i class="fa fa-trash"></i></a>
+                          <a  onclick="deleteConfirm('<?php echo base_url('admin/berita/hapus_kategori/' . $kategori->id_kategori) ?>')" href="#!" class="btn btn-danger btn-xs "><i class="fa fa-trash"></i></a>
                         </div>
                         </td>
                       </tr>

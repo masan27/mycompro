@@ -93,7 +93,7 @@ if (isset($_COOKIE['txt'])) {
                   <i class="fa fa-trash"></i> Hapus
                 </button>
               </p>
-              <a href="<?= base_url('admin/berita/kategori') ?>" class="btn btn-info btn-lg float-right">
+              <a href="<?= base_url('admin/galeri/kategori') ?>" class="btn btn-info btn-lg float-right">
                 <i class="fas fa-list-ul"></i> Kategori
               </a>
             </div>

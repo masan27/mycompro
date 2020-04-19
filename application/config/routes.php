@@ -54,7 +54,7 @@ $route['404_override'] = 'home/oops';
 $route['translate_uri_dashes'] = FALSE;
 
 //? custom for form ajax
-$route['admin/galeri/(:any)'] = 'admin/galeri/index/$1';
+$route['admin/galeri/(:num)'] = 'admin/galeri/index/$1';
 
 //? Ganti Tema
 // $route['admin/pengaturan'] = 'pengaturan/index';

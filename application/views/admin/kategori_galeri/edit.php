@@ -27,11 +27,11 @@ if (isset($edit)) {
           echo validation_errors('<div class="alert alert-warning">', '</div>');
 
           // Form buka 
-          echo form_open(base_url('admin/berita/kategori/'.$edit->id_kategori));
+          echo form_open(base_url('admin/galeri/kategori/'.$edit->id_kategori_galeri));
           ?>
 
           <div class="form-group">
-            <input type="text" name="nama_kategori" class="form-control" placeholder="Nama kategori" value="<?php echo set_value('nama_kategori', $edit->nama_kategori) ?>" required>
+            <input type="text" name="nama_kategori_galeri" class="form-control" placeholder="Nama kategori" value="<?php echo set_value('nama_kategori_galeri', $edit->nama_kategori_galeri) ?>" required>
           </div>
 
           <div class="form-group text-center">
