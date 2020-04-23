@@ -53,7 +53,7 @@ class Berita extends CI_Controller
 				$this->berita_model->delete($data);
 			}
 
-			$this->session->set_flashdata('success', 'Data telah dihapus');
+			$this->session->set_flashdata('success', 'Data berhasil dihapus');
 			redirect(base_url('admin/berita'), 'refresh');
 			// PROSES SETTING DRAFT
 		} elseif (isset($_POST['draft'])) {
@@ -92,7 +92,6 @@ class Berita extends CI_Controller
 			redirect(base_url('admin/berita'), 'refresh');
 		}
 	}
-
 
 	// Tambah berita
 	public function tambah()
@@ -183,7 +182,7 @@ class Berita extends CI_Controller
 						'tanggal_post'	=> date('Y-m-d H:i:s'),
 					);
 					$this->berita_model->tambah($data);
-					$this->session->set_flashdata('success', 'Data telah ditambah');
+					$this->session->set_flashdata('success', 'Data berhasil disimpan');
 					redirect(base_url('admin/berita'), 'refresh');
 				}
 			} else {
@@ -207,7 +206,7 @@ class Berita extends CI_Controller
 					'tanggal_post'	=> date('Y-m-d H:i:s'),
 				);
 				$this->berita_model->tambah($data);
-				$this->session->set_flashdata('success', 'Data telah ditambah');
+				$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				redirect(base_url('admin/berita/jenis_berita/' . $i->post('jenis_berita')), 'refresh');
 			}
 		} else {
@@ -321,7 +320,7 @@ class Berita extends CI_Controller
 						'urutan'	=> $i->post('urutan'),
 					);
 					$this->berita_model->edit($data);
-					$this->session->set_flashdata('success', 'Data telah diedit');
+					$this->session->set_flashdata('success', 'Data berhasil diubah');
 					redirect(base_url('admin/berita/jenis_berita/' . $i->post('jenis_berita')), 'refresh');
 				}
 			} else {
@@ -345,7 +344,7 @@ class Berita extends CI_Controller
 					'urutan'	=> $i->post('urutan'),
 				);
 				$this->berita_model->edit($data);
-				$this->session->set_flashdata('success', 'Data telah diedit');
+				$this->session->set_flashdata('success', 'Data berhasil diubah');
 				redirect(base_url('admin/berita'), 'refresh');
 			}
 		}
@@ -357,7 +356,6 @@ class Berita extends CI_Controller
 		);
 		$this->load->view('admin/berita/edit', $data, FALSE);
 	}
-
 
 	// Delete
 	public function delete($id_berita)
@@ -378,7 +376,7 @@ class Berita extends CI_Controller
 		// End hapus gambar
 		$data = array('id_berita'	=> $id_berita);
 		$this->berita_model->delete($data);
-		$this->session->set_flashdata('success', 'Data telah dihapus');
+		$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		redirect(base_url('admin/berita'), 'refresh');
 	}
 
@@ -429,7 +427,7 @@ class Berita extends CI_Controller
 					'slug_kategori'	=> $slug
 				);
 				$this->kategori_model->edit($data);
-				$this->session->set_flashdata('sukses', 'Data telah diedit');
+				$this->session->set_flashdata('success', 'Data berhasil diubah');
 				redirect(base_url('admin/kategori'), 'refresh');
 			}
 			// jika tambah
@@ -444,7 +442,7 @@ class Berita extends CI_Controller
 				);
 
 				$this->kategori_model->tambah($data);
-				$this->session->set_flashdata('sukses', 'Data telah ditambah');
+				$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				redirect(base_url('admin/kategori'), 'refresh');
 			}
 		}
@@ -456,7 +454,7 @@ class Berita extends CI_Controller
 	{		
 		$data = array('id_kategori'	=> $id_kategori);
 		$this->kategori_model->delete($data);
-		$this->session->set_flashdata('sukses', 'Data telah dihapus');
+		$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		redirect(base_url('admin/galeri/kategori'), 'refresh');
 	}
 }

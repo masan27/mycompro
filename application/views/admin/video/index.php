@@ -22,7 +22,7 @@ if (isset($_COOKIE['txt'])) {
 <head>
   <?php $this->load->view("admin/_partials/head.php") ?>
   <style>
-    .custom-file-label{
+    .custom-file-label {
       top: 32px !important;
     }
   </style>
@@ -86,71 +86,58 @@ if (isset($_COOKIE['txt'])) {
             <div class="card-header py-3 <?= $bg_d ?>">
               <p class="btn-group">
                 <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#Tambah">
-                  <i class="fa fa-plus"></i> Tambah Galeri
+                  <i class="fa fa-plus"></i> Tambah Video
                 </button>
 
                 <button class="btn btn-danger" type="submit" name="hapus">
                   <i class="fa fa-trash"></i> Hapus
                 </button>
               </p>
-              <a href="<?= base_url('admin/galeri/kategori') ?>" class="btn btn-info btn-lg float-right">
-                <i class="fas fa-list-ul"></i> Kategori
-              </a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table id="dataTable" class="<?= $txt . ' ' . $tbl_drk ?> display table table-bordered table-hover" cellspacing="0" width="100%">
                   <thead>
                     <tr>
-                      <th>
+                      <th width="5%">
                         <div class="mailbox-controls">
                           <!-- Check all button -->
                           <button type="button" class="btn btn-dark btn-sm checkbox-toggle"><i class="far fa-square"></i>
                           </button>
                         </div>
                       </th>
-                      <th>Gambar</th>
-                      <th>Judul</th>
-                      <th>Kategori - Posisi</th>
-                      <th>Author</th>
-                      <th>Tanggal</th>
+                      <th width="12%">Video</th>
+                      <th width="45%">Judul</th>
+                      <th>Position</th>
                       <th width="55px"></th>
                     </tr>
                   </thead>
                   <tbody>
-
                     <?php $i = 1;
-                    foreach ($galeri as $galeri) { ?>
-
+                    foreach ($video as $video) { ?>
                       <tr>
                         <td>
                           <div class="mailbox-star text-center">
                             <div class="text-center">
-                              <input type="checkbox" class="icheckbox_flat-blue " name="id_galeri[]" value="<?php echo $galeri->id_galeri ?>">
+                              <input type="checkbox" class="icheckbox_flat-blue " name="id_video[]" value="<?php echo $video->id_video ?>">
                               <span class="checkmark"></span>
                             </div>
                         </td>
+                        <td class="video"> <iframe src="https://www.youtube.com/embed/<?php echo $video->video ?>"></iframe></td>
                         <td>
-                          <img src="<?php echo base_url('assets/upload/image/thumbs/' . $galeri->gambar) ?>" width="60">
+                          <span class="<?= $txt_wr ?>"><?php echo $video->judul . ' ' ?></span> 
+                          <br><small>Keterangan : <?php echo $video->keterangan ?></small>
                         </td>
-                        <td><?php echo $galeri->judul_galeri ?></td>
-                        <td><?php echo $galeri->nama_kategori_galeri ?> - <?php echo $galeri->jenis_galeri ?></td>
-                        <td><?php echo $galeri->nama ?></td>
-                        <td><?php echo $galeri->tanggal ?></td>
-                        <td class="text-center">
+                        <td><?php echo $video->posisi ?></td>
+                        <td>
                           <div class="btn-group">
-                            <!-- <a href="<?php echo base_url('galeri/read/' . $galeri->id_galeri) ?>" class="btn btn-success btn-xs" target="_blank"><i class="fa fa-eye"></i></a> -->
-
-                            <a href="<?php echo base_url('admin/galeri/' . $galeri->id_galeri) ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-
-                            <a href="<?php echo base_url('admin/galeri/delete/' . $galeri->id_galeri) ?>" class="btn btn-danger btn-xs " onclick="confirmation(event)"><i class="fa fa-trash"></i></a>
+                            <a href="<?php echo base_url('admin/video/' . $video->id_video) ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                            <a onclick="deleteConfirm('<?php echo base_url('admin/video/delete/' . $video->id_video) ?>')" href="#!" class="btn btn-danger btn-xs "><i class="fa fa-trash"></i></a>
                           </div>
                         </td>
                       </tr>
-
                     <?php $i++;
                     } ?>
-
                   </tbody>
                 </table>
               </div>

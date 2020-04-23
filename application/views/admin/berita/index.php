@@ -120,12 +120,12 @@ if (isset($_COOKIE['txt'])) {
                         </div>
                       </th>
                       <th width="10%">GAMBAR</th>
-                      <th width="35%">JUDUL</th>
-                      <th width="15%">KATEGORI</th>
-                      <th width="10%">JENIS</th>
-                      <th width="10%">STATUS</th>
-                      <th width="10%">AUTHOR</th>
-                      <th width="15%">ACTION</th>
+                      <th>JUDUL</th>
+                      <th>KATEGORI</th>
+                      <th>JENIS</th>
+                      <th>STATUS</th>
+                      <th>AUTHOR</th>
+                      <th width="55px"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -168,11 +168,11 @@ if (isset($_COOKIE['txt'])) {
                         <td class="text-center <?= $txt_wr ?>"><?php echo $berita->nama ?></td>
                         <td class=text-center">
                           <div class="btn-group">
-                            <a href="<?php echo base_url('berita/read/' . $berita->slug_berita) ?>" class="btn btn-success btn-xs" target="_blank"><i class="fa fa-eye"></i></a>
+                            <!-- <a href="<?php echo base_url('berita/read/' . $berita->slug_berita) ?>" class="btn btn-success btn-xs" target="_blank"><i class="fa fa-eye"></i></a> -->
 
                             <a href="<?php echo base_url('admin/berita/edit/' . $berita->id_berita) ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
 
-                            <a href="<?php echo base_url('admin/berita/delete/' . $berita->id_berita) ?>" class="btn btn-danger btn-xs" onclick="confirmation(event)"><i class="fa fa-trash"></i></a>
+                            <a onclick="deleteConfirm('<?php echo base_url('admin/berita/delete/' . $berita->id_berita) ?>')" href="#!" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                           </div>
                         </td>
                       </tr>

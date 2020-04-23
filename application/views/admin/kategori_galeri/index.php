@@ -86,7 +86,7 @@ if (isset($_COOKIE['txt'])) {
                       <th>#</th>
                       <th>Nama Kategori</th>
                       <th>Slug</th>
-                      <th>Action</th>
+                      <th width="55px"></th>
                     </tr>
                   </thead>
                   <tbody>

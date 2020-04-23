@@ -37,15 +37,8 @@ class Galeri extends CI_Controller
 			array('required'	=> 'Judul harus diisi')
 		);
 
-		$valid->set_rules(
-			'isi',
-			'Isi',
-			'required',
-			array('required'	=> 'Isi galeri harus diisi')
-		);
-
 		if ($valid->run() === FALSE) {
-			// End validasi			
+			// Cancel Proses and Showing Error's			
 
 			$data = array(
 				'title'				=> 'Galeri',
@@ -74,7 +67,7 @@ class Galeri extends CI_Controller
 					$config['max_size']      = '12000'; // KB  
 					$this->load->library('upload', $config);
 					if (!$this->upload->do_upload('gambar')) {
-						// End validasi
+						// Cancel Proses and Showing Error's
 
 						$data = array(
 							'title'				=> 'Galeri',
@@ -127,16 +120,12 @@ class Galeri extends CI_Controller
 								'id_galeri'			=> $id,
 								'id_kategori_galeri' => $i->post('id_kategori_galeri'),
 								'id_user'			=> $this->session->userdata('id_user'),
-								'judul_galeri'		=> $i->post('judul_galeri'),
-								'isi'				=> $i->post('isi'),
+								'judul_galeri'		=> $i->post('judul_galeri'),								
 								'jenis_galeri'		=> $i->post('jenis_galeri'),
-								'gambar'			=> $upload_data['uploads']['file_name'],
-								'website'			=> $i->post('website'),
-								'status_text'		=> $i->post('status_text'),
-								'urutan'		=> $i->post('urutan')
+								'gambar'			=> $upload_data['uploads']['file_name']								
 							);
 							$this->galeri_model->edit($data);
-							$this->session->set_flashdata('sukses', 'Data telah diedit');
+							$this->session->set_flashdata('success', 'Data berhasil diubah');
 							redirect(base_url('admin/galeri'), 'refresh');
 						}
 					}
@@ -147,15 +136,11 @@ class Galeri extends CI_Controller
 						'id_galeri'			=> $id,
 						'id_kategori_galeri' => $i->post('id_kategori_galeri'),
 						'id_user'			=> $this->session->userdata('id_user'),
-						'judul_galeri'		=> $i->post('judul_galeri'),
-						'isi'				=> $i->post('isi'),
-						'jenis_galeri'		=> $i->post('jenis_galeri'),
-						'website'			=> $i->post('website'),
-						'status_text'		=> $i->post('status_text'),
-						'urutan'		=> $i->post('urutan')
+						'judul_galeri'		=> $i->post('judul_galeri'),						
+						'jenis_galeri'		=> $i->post('jenis_galeri')						
 					);
 					$this->galeri_model->edit($data);
-					$this->session->set_flashdata('sukses', 'Data telah diedit');
+					$this->session->set_flashdata('success', 'Data berhasil diubah');
 					redirect(base_url('admin/galeri'), 'refresh');
 				}
 			} else {
@@ -211,16 +196,12 @@ class Galeri extends CI_Controller
 					$data = array(
 						'id_kategori_galeri' => $i->post('id_kategori_galeri'),
 						'id_user'			=> $this->session->userdata('id_user'),
-						'judul_galeri'		=> $i->post('judul_galeri'),
-						'isi'				=> $i->post('isi'),
+						'judul_galeri'		=> $i->post('judul_galeri'),						
 						'jenis_galeri'		=> $i->post('jenis_galeri'),
-						'gambar'			=> $upload_data['uploads']['file_name'],
-						'website'			=> $i->post('website'),
-						'status_text'		=> $i->post('status_text'),
-						'urutan'		=> $i->post('urutan')
+						'gambar'			=> $upload_data['uploads']['file_name']						
 					);
 					$this->galeri_model->tambah($data);
-					$this->session->set_flashdata('sukses', 'Data telah ditambah');
+					$this->session->set_flashdata('success', 'Data berhasil disimpan');
 					redirect(base_url('admin/galeri'), 'refresh');
 				}
 			}
@@ -246,7 +227,7 @@ class Galeri extends CI_Controller
 				$this->galeri_model->delete($data);
 			}
 
-			$this->session->set_flashdata('sukses', 'Data telah dihapus');
+			$this->session->set_flashdata('success', 'Data berhasil dihapus');
 			redirect(base_url('admin/galeri'), 'refresh');
 			// PROSES SETTING DRAFT
 		}
@@ -265,7 +246,7 @@ class Galeri extends CI_Controller
 		// End hapus gambar
 		$data = array('id_galeri'	=> $id_galeri);
 		$this->galeri_model->delete($data);
-		$this->session->set_flashdata('sukses', 'Data telah dihapus');
+		$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		redirect(base_url('admin/galeri'), 'refresh');
 	}
 
@@ -314,7 +295,7 @@ class Galeri extends CI_Controller
 					'urutan'		=> $i->post('urutan'),
 				);
 				$this->kategori_galeri_model->edit($data);
-				$this->session->set_flashdata('sukses', 'Data telah diedit');
+				$this->session->set_flashdata('success', 'Data berhasil diubah');
 				redirect(base_url('admin/galeri/kategori'), 'refresh');
 			} else {
 				$i 	= $this->input;
@@ -325,7 +306,7 @@ class Galeri extends CI_Controller
 					'slug_kategori_galeri'	=> $slug,
 				);
 				$this->kategori_galeri_model->tambah($data);
-				$this->session->set_flashdata('sukses', 'Data telah ditambah');
+				$this->session->set_flashdata('success', 'Data berhasil disimpan');
 				redirect(base_url('admin/galeri/kategori'), 'refresh');
 			}
 		}
@@ -337,7 +318,7 @@ class Galeri extends CI_Controller
 
 		$data = array('id_kategori_galeri'	=> $id_kategori_galeri);
 		$this->kategori_galeri_model->delete($data);
-		$this->session->set_flashdata('sukses', 'Data telah dihapus');
+		$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		redirect(base_url('admin/galeri/kategori'), 'refresh');
 	}
 }
