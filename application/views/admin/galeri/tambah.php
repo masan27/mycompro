@@ -26,7 +26,7 @@ if (isset($_COOKIE['txt'])) {
         echo validation_errors('<div class="alert alert-warning">', '</div>');
 
         // Form buka 
-        echo form_open(base_url('admin/galeri'));
+        echo form_open_multipart(base_url('admin/galeri'));
         ?>
 
         <div class="row">

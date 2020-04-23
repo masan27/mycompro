@@ -64,73 +64,24 @@ if (isset($_COOKIE['txt'])) {
 		</li>
 
 
-		<li class="nav-item <?php echo strstr($this->uri->segment(2), 'user') ? 'active' : '' ?>">
-			<a class="nav-link <?php echo strstr($this->uri->segment(2), 'user') ? '' : 'collapsed' ?>" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
-				<i class="fas fa-fw fa-users"></i>
-				<span>User</span></a>
+		<li class="nav-item <?php echo strstr($this->uri->segment(2), 'pengaturan') ? 'active' : '' ?>">
+			<a class="nav-link <?php echo strstr($this->uri->segment(2), 'pengaturan') ? '' : 'collapsed' ?>" href="#" data-toggle="collapse" data-target="#collapsePengaturan" aria-expanded="true" aria-controls="collapsePengaturan">
+				<i class="fas fa-fw fa-cog"></i>
+				<span>Pengaturan</span></a>
 			</a>
-			<div id="collapseUser" class="collapse <?php echo strstr($this->uri->segment(2), 'user') ? 'show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+			<div id="collapsePengaturan" class="collapse <?php echo strstr($this->uri->segment(2), 'pengaturan') ? 'show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 				<div class="<?= $bg_d ?> py-2 collapse-inner rounded">
-					<a class="collapse-item <?= $txt ?> <?php echo strstr($this->uri->segment(3), 'admin') ? 'active' : '' ?>" href="<?php echo site_url('admin/user/admin') ?>">Admin</a>
-					<a class="collapse-item <?= $txt ?> <?php echo strstr($this->uri->segment(3), 'astur') ? 'active' : '' ?>" href="<?php echo site_url('admin/user/astur') ?>">Astur</a>
+					<a class="collapse-item <?= $txt ?> <?php echo strstr($this->uri->segment(3), 'web') ? 'active' : '' ?>" href="<?php echo site_url('admin/pengaturan/web') ?>">Web</a>
+					<a class="collapse-item <?= $txt ?> <?php echo strstr($this->uri->segment(3), 'app') ? 'active' : '' ?>" href="<?php echo site_url('admin/pengaturan/app') ?>">Aplikasi</a>
 				</div>
 			</div>
 		</li>
-
-		<li class="nav-item <?php echo $this->uri->segment(2) == 'hak_login' ? 'active' : '' ?>">
-			<a class="nav-link menu" href="<?php echo site_url('admin/hak_login') ?>">
-				<i class="fas fa-fw fa-sign-in-alt"></i>
-				<span>Akses Login</span></a>
-		</li>
-
-		<li class="nav-item <?php echo $this->uri->segment(2) == 'libur' ? 'active' : '' ?>">
-			<a class="nav-link menu" href="<?php echo site_url('admin/libur') ?>">
-				<i class="fas fa-fw fa-edit"></i>
-				<span>Liburan</span></a>
-		</li>
-
-		<li class="nav-item <?php echo $this->uri->segment(2) == 'laporan' ? 'active' : '' ?>">
+		
+		<!-- <li class="nav-item <?php echo $this->uri->segment(2) == 'laporan' ? 'active' : '' ?>">
 			<a class="nav-link menu" href="<?php echo site_url('admin/laporan/' . date('Y-m-d') . '/' . date('Y-m-d')) ?>">
 				<i class="fas fa-fw fa-file-alt"></i>
 				<span>Laporan</span></a>
-		</li>
-
-		<li class="nav-item <?php echo $this->uri->segment(2) == 'pengaturan' ? 'active' : '' ?>">
-			<a class="nav-link menu" href="<?php echo site_url('admin/pengaturan') ?>">
-				<i class="fas fa-fw fa-cog"></i>
-				<span>Pengaturan</span></a>
-		</li>
-
-		<li class="nav-item <?php echo $this->uri->segment(2) == 'absen' ? 'active' : '' ?>">
-			<a class="nav-link menu" href="<?php echo site_url('admin/absen/home') ?>">
-				<i class="fas fa-fw fa-edit"></i>
-				<span>Absen</span></a>
-		</li>
-
-		<!-- <li class="nav-item <?php echo $this->uri->segment(2) == 'topik' ? 'active' : '' ?>">
-				<a class="nav-link menu" href="<?php echo site_url('admin/topik') ?>">
-					<i class="fas fa-fw fa-server"></i>
-					<span>Kegiatan</span></a>
-			</li> -->
-
-		<li class="nav-item <?php echo strstr($this->uri->segment(2), 'lainnya_') ? 'active' : '' ?>">
-			<a class="nav-link <?php echo strstr($this->uri->segment(2), 'lainnya_') ? '' : 'collapsed' ?>" href="#" data-toggle="collapse" data-target="#collapseLainnya" aria-expanded="true" aria-controls="collapseLainnya">
-				<i class="fas fa-fw fa-tasks"></i><span class="dot notify notif"></span>
-				<span>Lain-lain</span></a>
-			</a>
-			<div id="collapseLainnya" class="collapse <?php echo strstr($this->uri->segment(2), 'sa') ? 'show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-				<div class="<?= $bg_d ?> py-2 collapse-inner rounded">
-					<a class="collapse-item <?= $txt ?> <?php echo strstr($this->uri->segment(2), 'izin') ? 'active' : '' ?>" href="<?php echo site_url('admin/lainnya_izin') ?>">Izin</a>
-					<a class="collapse-item <?= $txt ?> <?php echo strstr($this->uri->segment(2), 'acc') ? 'active' : '' ?>" href="<?php echo site_url('admin/lainnya_acc') ?>">Konfirmasi <span class="count notif"></span> </a>
-				</div>
-			</div>
-		</li>
-
-		<li class="nav-item <?php echo $this->uri->segment(2) == 'pengaturan' ? 'active' : '' ?>">
-			<a class="nav-link menu" href="<?php echo site_url('admin/pengaturan') ?>">
-				<i class="fas fa-fw fa-cog"></i>
-				<span>Pengaturan</span></a>
-		</li>
+		</li>		 -->
 
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">

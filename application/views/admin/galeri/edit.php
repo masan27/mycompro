@@ -27,7 +27,7 @@ if (isset($edit)) {
           echo validation_errors('<div class="alert alert-warning">', '</div>');
 
           // Form buka 
-          echo form_open(base_url('admin/galeri/' . $edit->id_galeri));
+          echo form_open_multipart(base_url('admin/galeri/' . $edit->id_galeri));
           ?>
 
           <div class="row">

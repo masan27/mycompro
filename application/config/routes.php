@@ -56,6 +56,7 @@ $route['translate_uri_dashes'] = FALSE;
 //? custom for form ajax
 $route['admin/galeri/(:num)'] = 'admin/galeri/index/$1';
 $route['admin/video/(:num)'] = 'admin/video/index/$1';
+$route['admin/download/(:num)'] = 'admin/download/index/$1';
 
 //? Ganti Tema
 // $route['admin/pengaturan'] = 'pengaturan/index';

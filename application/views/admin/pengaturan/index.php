@@ -118,25 +118,7 @@ if (isset($_COOKIE['txt'])) {
                           <span class="text"><?= $text ?></span>
                         </a>
                       </td>
-                    </tr>
-                    <?php if ($this->session->level == 'admin') { ?>
-                    <tr>
-                      <td class="align-middle text-center"><?= $no++ ?></td>
-                      <td>
-                        <b>Semester Baru :</b><br>
-                        Silahkan pilih opsi ini jika sudah masuk semester baru, proses
-                        ini akan mengahapus semua data kecuali data user atau pengguna
-                      </td>
-                      <td class="align-middle text-center">
-                        <a href="<?= base_url('konfirmasi') ?>" class="btn btn-danger btn-icon-split btn-sm">
-                          <span class="icon text-white-50">
-                            <i class="fas fa-forward"></i>
-                          </span>
-                          <span class="text">New SMT</span>
-                        </a>
-                      </td>
-                    </tr>
-                    <?php } ?>
+                    </tr>                    
                   </tbody>
                 </table>
               </div>
