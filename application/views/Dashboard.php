@@ -11,7 +11,7 @@ class Dashboard extends CI_Controller
         $url_pengalihan = str_replace(base_url(), '', current_url());
         $this->session->set_userdata('pengalihan', $url_pengalihan);
 
-        $this->load->model('dasbor_model');
+        $this->load->model('m_dashboard');
     }
 
     public function index()
