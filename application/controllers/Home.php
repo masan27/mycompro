@@ -12,6 +12,8 @@ class Home extends CI_Controller
 		$this->load->model('galeri_model');
 		$this->load->model('video_model');
 		$this->load->model('agenda_model');
+		$this->load->model('agenda_model');
+		$this->load->model('nav_model');
 	}
 
 	public function index()
@@ -96,13 +98,8 @@ class Home extends CI_Controller
 			'site'				=> $site,
 			'isi'				=> 'home/oops'
 		);
-		$url = current_url();
 
-		if (preg_match("/admin/", $url)) {
-			$this->load->view('404');
-		} else {
-			$this->load->view('layout/wrapper', $data);
-		}
+		$this->load->view('404');
 	}
 }
 

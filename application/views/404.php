@@ -148,8 +148,8 @@
 				<h1>Oops!</h1>
 				<h2>404 - The Page can't be found</h2>
 			</div>
-			<a href="<?= base_url('admin/dashboard') ?>">Go TO Homepage</a>
-			<?php //echo $this->router->fetch_class() . ' - ' .$this->router->fetch_method() ?> -->
+			<?php ($this->session->username)? $link = 'admin/dashboard': $link = '' ?>
+			<a href="<?= base_url($link) ?>">Go TO Homepage</a>			
 		</div>
 	</div>
 

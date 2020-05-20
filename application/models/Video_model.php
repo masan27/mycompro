@@ -11,7 +11,7 @@ class Video_model extends CI_Model {
 	public function listing() {
 		$this->db->select('*');
 		$this->db->from('video');
-		$this->db->order_by('urutan','ASC');
+		$this->db->order_by('id_video','DESC');
 		$query = $this->db->get();
 		return $query->result();
 	}

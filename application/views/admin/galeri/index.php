@@ -131,7 +131,7 @@ if (isset($_COOKIE['txt'])) {
                             </div>
                         </td>
                         <td>
-                          <img src="<?php echo base_url('assets/upload/image/thumbs/' . $galeri->gambar) ?>" width="60">
+                          <img src="<?php echo base_url('upload/image/thumbs/' . $galeri->gambar) ?>" width="60">
                         </td>
                         <td><?php echo $galeri->judul_galeri ?></td>
                         <td><?php echo $galeri->nama_kategori_galeri ?> - <?php echo $galeri->jenis_galeri ?></td>

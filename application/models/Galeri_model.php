@@ -32,7 +32,7 @@ class Galeri_model extends CI_Model {
 		$this->db->join('users','users.id_user = galeri.id_user','LEFT');
 		// End join
 		$this->db->where('jenis_galeri','Homepage');
-		$this->db->order_by('urutan','ASC');
+		$this->db->order_by('id_galeri','ASC');
 		$this->db->limit(5);
 		$query = $this->db->get();
 		return $query->result();

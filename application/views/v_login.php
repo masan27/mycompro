@@ -84,7 +84,7 @@ if (isset($_COOKIE['txt'])) {
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="hh">
-				<img src="<?= $this->website->icon() ?>" alt="<?= $this->website->namaweb() ?>" class="img img-responsive logo-app" alt="My-Logo">
+				<img src="<?= $this->website->logo() ?>" alt="<?= $this->website->namaweb() ?>" class="img img-responsive logo-app" alt="My-Logo">
 				<span class="judul-app"><?= $this->website->namaweb() ?></span>				
 			</div>
 		</div>

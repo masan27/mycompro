@@ -38,24 +38,27 @@ if (isset($_COOKIE['txt'])) {
 		background-size: 15%;
 		background-color: rgba(255, 255, 2555, 0.75);
 	}
-	.breadcrumb{
+
+	.breadcrumb {
 		background-color: transparent !important;
 	}
+
 	.info-box {
-    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
-    border-radius: .25rem;
-    padding: .5rem;
-    min-height: 80px;
-    background: #fff;
-}
-.logo-app {
-			display: block;
-			max-width: 50%;
-			height: auto;
-			margin: 0 auto;
-			padding-bottom: 10px;
-			margin-top: 10px;
-		}
+		box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+		border-radius: .25rem;
+		padding: .5rem;
+		min-height: 80px;
+		background: #fff;
+	}
+
+	.logo-app {
+		display: block;
+		max-width: 50%;
+		height: auto;
+		margin: 0 auto;
+		padding-bottom: 10px;
+		margin-top: 10px;
+	}
 </style>
 <!-- <i class="fa fa_spinner fa_spin"></i> -->
 <div id="loading" style="transition: opacity 2s;"></div>
