@@ -22,7 +22,7 @@ if (isset($_COOKIE['txt'])) {
 <head>
   <?php $this->load->view("admin/_partials/head.php") ?>
   <style>
-    .custom-file-label{
+    .custom-file-label {
       top: 32px !important;
     }
   </style>
@@ -74,6 +74,10 @@ if (isset($_COOKIE['txt'])) {
           </div>
 
           <!-- DataTales -->
+          <!-- Form  -->
+          <?php
+            echo form_open_multipart(base_url('admin/berita/tambah'));
+          ?>
           <div class="card shadow mb-4 <?= $bg_s . ' ' . $txt ?>">
             <div class="card-header py-3 <?= $bg_d ?>">
             </div>
@@ -91,9 +95,6 @@ if (isset($_COOKIE['txt'])) {
                 echo $error;
                 echo '</div>';
               }
-
-              // Form open
-              echo form_open_multipart(base_url('admin/berita/tambah'));
               ?>
 
               <div class="row">
@@ -212,24 +213,27 @@ if (isset($_COOKIE['txt'])) {
                     <textarea name="isi" class="form-control" id="isi" placeholder="Isi berita"><?php echo set_value('isi') ?></textarea>
                   </div>
 
-                  <div class="form-group text-right ">
-                    <button type="submit" name="submit" class="btn btn-success btn-lg"><i class="fa fa-save"></i> Simpan Data</button>
-                    <a href="<?= base_url('admin/berita') ?>" class="btn btn-default btn-lg <?= $bg_d . ' ' . $txt ?>">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-window-close"></i>
-                      </span>
-                      <span class="text">Tutup</span>
-                    </a>
-                  </div>
-
                 </div>
-
-                <?php
-                // Form close
-                echo form_close();
-                ?>
-
               </div>
+
+              <div class="card-footer py-3 <?= $bg_s ?>">
+                <button type="submit" class="btn btn-success btn-icon-split btn-sm">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-save"></i>
+                  </span>
+                  <span class="text">Simpan</span>
+                </button>
+                <a href="<?php echo base_url('admin/berita/') ?>" class="btn <?= $bg_d . ' ' . $txt ?> btn-icon-split btn-sm">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-window-close"></i>
+                  </span>
+                  <span class="text">Tutup</span>
+                </a>
+              </div>
+              <?php
+              // Form close
+              echo form_close();
+              ?>
             </div>
           </div>
 

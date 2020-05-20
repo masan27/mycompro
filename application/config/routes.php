@@ -58,7 +58,14 @@ $route['admin/galeri/(:num)'] = 'admin/galeri/index/$1';
 $route['admin/video/(:num)'] = 'admin/video/index/$1';
 $route['admin/download/(:num)'] = 'admin/download/index/$1';
 
-//? Ganti Tema
-// $route['admin/pengaturan'] = 'pengaturan/index';
-// $route['admin/pengaturan/light'] = 'pengaturan/light';
-// $route['admin/pengaturan/dark'] = 'pengaturan/dark';
+//? Pengaturan Aplikasi
+$route['admin/pengaturan'] = 'admin/pengaturan/list';
+$route['admin/pengaturan/app'] = 'admin/pengaturan/index';
+$route['admin/pengaturan/app/light'] = 'admin/pengaturan/light';
+$route['admin/pengaturan/app/dark'] = 'admin/pengaturan/dark';
+
+//? Pengaturan Web
+$route['admin/pengaturan/web'] = 'admin/konfigurasi/index';
+$route['admin/pengaturan/web/umum'] = 'admin/konfigurasi/umum';
+$route['admin/pengaturan/web/logo'] = 'admin/konfigurasi/logo';
+$route['admin/pengaturan/web/icon'] = 'admin/konfigurasi/icon';

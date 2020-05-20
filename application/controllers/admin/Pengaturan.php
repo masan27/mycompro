@@ -10,8 +10,14 @@ class Pengaturan extends CI_Controller
 
   public function index()
   {
-    $data['title'] = 'Pengaturan';
+    $data['title'] = 'Aplikasi';
     $this->load->view('admin/pengaturan/index', $data);
+  }
+
+  public function list()
+  {
+    $data['title'] = 'Pengaturan';
+    $this->load->view('admin/pengaturan/list', $data);
   }
 
   public function light()

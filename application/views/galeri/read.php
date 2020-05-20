@@ -27,7 +27,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active">
-            <img src="<?php echo base_url('assets/upload/image/'.$galeri->gambar) ?>" alt="<?php echo $galeri->judul_galeri ?>">
+            <img src="<?php echo base_url('upload/image/'.$galeri->gambar) ?>" alt="<?php echo $galeri->judul_galeri ?>">
         </div><!-- End .item -->
     </div><!-- End .carousel-inner -->
 
@@ -47,7 +47,7 @@
 
         <div class="portfolio-item portfolio-image-zoom portfolio-meta-slideup">
             <figure>
-                <a href="<?php echo base_url('assets/upload/image/'.$listing->gambar) ?>" class="zoom-item" title="<?php echo $listing->judul_galeri ?>"><img src="<?php echo base_url('assets/upload/image/thumbs/'.$listing->gambar) ?>" alt="<?php echo $listing->judul_galeri ?>" class="img-responsive"></a>
+                <a href="<?php echo base_url('upload/image/'.$listing->gambar) ?>" class="zoom-item" title="<?php echo $listing->judul_galeri ?>"><img src="<?php echo base_url('assets/upload/image/thumbs/'.$listing->gambar) ?>" alt="<?php echo $listing->judul_galeri ?>" class="img-responsive"></a>
             </figure>
             <div class="portfolio-meta dark">
                 <h3 class="portfolio-title"><a href="<?php echo base_url('galeri/read/'.$listing->id_galeri) ?>"><?php echo $listing->judul_galeri ?></a></h3>

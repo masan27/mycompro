@@ -46,8 +46,8 @@ class Berita extends CI_Controller
 			for ($i = 0; $i < sizeof($id_beritanya); $i++) {
 				$berita 	= $this->berita_model->detail($id_beritanya[$i]);
 				if ($berita->gambar != '') {
-					unlink('./assets/upload/berita/' . $berita->gambar);
-					unlink('./assets/upload/berita/thumbs/' . $berita->gambar);
+					unlink('./upload/berita/' . $berita->gambar);
+					unlink('./upload/berita/thumbs/' . $berita->gambar);
 				}
 				$data = array('id_berita'	=> $id_beritanya[$i]);
 				$this->berita_model->delete($data);
@@ -177,8 +177,7 @@ class Berita extends CI_Controller
 						'keywords'		=> $i->post('keywords'),
 						'tanggal_publish' => date('Y-m-d', strtotime($i->post('tanggal_publish'))) . ' ' . $i->post('jam_publish'),
 						// 'tanggal_mulai'		=> $i->post('tanggal_mulai'),
-						// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),
-						'urutan'	=> $i->post('urutan'),
+						// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),						
 						'tanggal_post'	=> date('Y-m-d H:i:s'),
 					);
 					$this->berita_model->tambah($data);
@@ -201,13 +200,12 @@ class Berita extends CI_Controller
 					'keywords'		=> $i->post('keywords'),
 					'tanggal_publish' => date('Y-m-d', strtotime($i->post('tanggal_publish'))) . ' ' . $i->post('jam_publish'),
 					// 'tanggal_mulai'		=> $i->post('tanggal_mulai'),
-					// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),
-					'urutan'	=> $i->post('urutan'),
+					// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),					
 					'tanggal_post'	=> date('Y-m-d H:i:s'),
 				);
 				$this->berita_model->tambah($data);
 				$this->session->set_flashdata('success', 'Data berhasil disimpan');
-				redirect(base_url('admin/berita/jenis_berita/' . $i->post('jenis_berita')), 'refresh');
+				redirect(base_url('admin/berita'), 'refresh');
 			}
 		} else {
 			// End masuk database
@@ -248,7 +246,7 @@ class Berita extends CI_Controller
 
 			if (!empty($_FILES['gambar']['name'])) {
 
-				$config['upload_path']   = './assets/upload/image/';
+				$config['upload_path']   = './upload/image/';
 				$config['allowed_types'] = 'gif|jpg|png|svg|jpeg';
 				$config['max_size']      = '12000'; // KB  
 				$this->load->library('upload', $config);
@@ -267,8 +265,8 @@ class Berita extends CI_Controller
 					$upload_data        		= array('uploads' => $this->upload->data());
 					// Image Editor
 					$config['image_library']  	= 'gd2';
-					$config['source_image']   	= './assets/upload/image/' . $upload_data['uploads']['file_name'];
-					$config['new_image']     	= './assets/upload/image/thumbs/';
+					$config['source_image']   	= './upload/image/' . $upload_data['uploads']['file_name'];
+					$config['new_image']     	= './upload/image/thumbs/';
 					$config['create_thumb']   	= TRUE;
 					$config['quality']       	= "100%";
 					$config['maintain_ratio']   = TRUE;
@@ -294,8 +292,8 @@ class Berita extends CI_Controller
 
 					//Hapus gambar
 					if ($berita->gambar != "") {
-						unlink('./assets/upload/image/' . $berita->gambar);
-						unlink('./assets/upload/image/thumbs/' . $berita->gambar);
+						unlink('./upload/image/' . $berita->gambar);
+						unlink('./upload/image/thumbs/' . $berita->gambar);
 					}
 					// End hapus
 
@@ -316,12 +314,11 @@ class Berita extends CI_Controller
 						'keywords'		=> $i->post('keywords'),
 						'tanggal_publish' => date('Y-m-d', strtotime($i->post('tanggal_publish'))) . ' ' . $i->post('jam_publish'),
 						// 'tanggal_mulai'		=> $i->post('tanggal_mulai'),
-						// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),
-						'urutan'	=> $i->post('urutan'),
+						// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),						
 					);
 					$this->berita_model->edit($data);
 					$this->session->set_flashdata('success', 'Data berhasil diubah');
-					redirect(base_url('admin/berita/jenis_berita/' . $i->post('jenis_berita')), 'refresh');
+					redirect(base_url('admin/berita'), 'refresh');
 				}
 			} else {
 				$i 		= $this->input;
@@ -340,8 +337,7 @@ class Berita extends CI_Controller
 					'keywords'		=> $i->post('keywords'),
 					'tanggal_publish' => date('Y-m-d', strtotime($i->post('tanggal_publish'))) . ' ' . $i->post('jam_publish'),
 					// 'tanggal_mulai'		=> $i->post('tanggal_mulai'),
-					// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),
-					'urutan'	=> $i->post('urutan'),
+					// 'tanggal_selesai'		=> $i->post('tanggal_selesai'),					
 				);
 				$this->berita_model->edit($data);
 				$this->session->set_flashdata('success', 'Data berhasil diubah');
@@ -370,8 +366,8 @@ class Berita extends CI_Controller
 		$berita = $this->berita_model->detail($id_berita);
 		// Proses hapus gambar
 		if ($berita->gambar != "") {
-			unlink('./assets/upload/image/' . $berita->gambar);
-			unlink('./assets/upload/image/thumbs/' . $berita->gambar);
+			unlink('./upload/image/' . $berita->gambar);
+			unlink('./upload/image/thumbs/' . $berita->gambar);
 		}
 		// End hapus gambar
 		$data = array('id_berita'	=> $id_berita);

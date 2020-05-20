@@ -27,56 +27,26 @@ $nav_layanan                = $this->nav_model->nav_layanan();
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <!-- home -->
-            <li><a href="<?php echo base_url() ?>" class="active">BERANDA</a></li>
+            <!-- Home -->
+            <li><a href="<?php echo base_url() ?>" class="<?php echo $this->uri->segment(1) == '' ? 'active' : '' ?>">BERANDA</a></li>
 
-            <!-- berita -->
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BERITA <span class="caret"></span></a>
-                <ul class="dropdown-menu sub-menu">
-                    <?php foreach($nav_berita as $nav_berita) { ?>
-                    <li class="sub-active"><a href="<?php echo base_url('berita/kategori/'.$nav_berita->slug_kategori) ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $nav_berita->nama_kategori ?></a></li>
-                    <?php } ?>
-                    <li class="sub-active"><a href="<?php echo base_url('berita') ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Indeks Berita</a></li>                   
-                </ul>
-            </li>
+            <!-- Berita -->
+            <li><a href="<?php echo base_url('berita') ?>" class="<?php echo $this->uri->segment(1) == 'berita' ? 'active' : '' ?>">BERITA</a></li>            
 
-            <!-- LAYANAN -->
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LAYANAN<span class="caret"></span></a>
-                <ul class="dropdown-menu sub-menu">
-                    <?php foreach($nav_layanan as $nav_layanan) { ?>
-                    <li class="sub-active"><a href="<?php echo base_url('berita/layanan/'.$nav_layanan->slug_berita) ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $nav_layanan->judul_berita ?></a></li>
-                    <?php } ?> 
-                </ul>
-            </li>
+            <!-- Profil -->
+            <li><a href="<?php echo base_url('profil') ?>" class="<?php echo $this->uri->segment(1) == 'profil' ? 'active' : '' ?>">PROFIL</a></li>
 
-            <!-- PROFIL -->
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PROFIL<span class="caret"></span></a>
-                <ul class="dropdown-menu sub-menu">
-                    <?php foreach($nav_profil as $nav_profil) { ?>
-                    <li class="sub-active"><a href="<?php echo base_url('berita/profil/'.$nav_profil->slug_berita) ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> <?php echo $nav_profil->judul_berita ?></a></li>
-                    <?php } ?> 
-                </ul>
-            </li>
+            <!-- Galeri -->
+            <li><a href="<?php echo base_url('galeri') ?>" class="<?php echo $this->uri->segment(1) == 'galeri' ? 'active' : '' ?>">GALERI</a></li>
 
-            <!-- galeri -->
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">GALERI <span class="caret"></span></a>
-                <ul class="dropdown-menu sub-menu">
-                    
-                    <li class="sub-active"><a href="<?php echo base_url('galeri'); ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Galeri Foto</a></li>
-                    <li class="sub-active"><a href="<?php echo base_url('video'); ?>"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Galeri Video</a></li>                   
-                </ul>
-            </li>
+            <!-- Video -->
+            <li><a href="<?php echo base_url('video') ?>" class="<?php echo $this->uri->segment(1) == 'video' ? 'active' : '' ?>">VIDEO</a></li>            
+
+            <!-- Download -->
+            <li><a href="<?php echo base_url('download') ?>" class="<?php echo $this->uri->segment(1) == 'download' ? 'active' : '' ?>">UNDUHAN</a></li>
             
-
-            <!-- DOWNLOAD -->
-            <li><a href="<?php echo base_url('download') ?>">UNDUHAN</a></li>
-            
-            <!-- kontak  -->
-            <li><a href="<?php echo base_url('kontak') ?>">KONTAK</a></li>
+            <!-- Kontak  -->
+            <li><a href="<?php echo base_url('kontak') ?>" class="<?php echo $this->uri->segment(1) == 'kontak' ? 'active' : '' ?>">KONTAK</a></li>
         </ul>
         <div class="menu-right-option pull-right">
             

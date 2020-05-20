@@ -145,7 +145,7 @@ if (isset($_COOKIE['txt'])) {
                           <?php if ($berita->gambar != "") { ?>
                             <img src="<?php echo base_url('upload/image/thumbs/' . $berita->gambar) ?>" class="img img-thumbnail img-responsive" width="60">
                           <?php } else { ?>
-                            <img src="<?php echo base_url('upload/image/thumbs/' . $site->icon) ?>" class="img img-thumbnail img-responsive" width="60">
+                            <!-- <img src="<?php echo base_url('upload/image/thumbs/' . $site->icon) ?>" class="img img-thumbnail img-responsive" width="60"> -->
                           <?php } ?>
                         </td>
                         <td>

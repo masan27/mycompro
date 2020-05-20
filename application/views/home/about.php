@@ -15,7 +15,7 @@
                     <!-- .col-md-8 -->
                     <div class="col-md-4">
                         <div class="about-greenforest-img">
-                            <img src="<?php echo base_url('assets/upload/image/'.$profil->gambar) ?>" alt="about-greenforet-img" class="img-responsive" />
+                            <img src="<?php echo base_url('upload/image/'.$profil->gambar) ?>" alt="about-greenforet-img" class="img-responsive" />
                         </div>
                         <!-- .about-greenforest-img -->
                     </div>

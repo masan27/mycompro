@@ -19,6 +19,16 @@ if (isset($_COOKIE['txt'])) {
 
 <head>
   <?php $this->load->view("admin/_partials/head.php") ?>
+  <style>
+    #imagePreview {
+      width: 150px;
+      height: 150px;
+      background-position: center center;
+      background-size: cover;
+      -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+      display: inline-block;
+    }
+  </style>
 </head>
 
 <body id="page-top">
@@ -69,7 +79,7 @@ if (isset($_COOKIE['txt'])) {
           <!-- DataTales -->
           <div class="card shadow mb-4 <?= $bg_s . ' ' . $txt ?>">
             <div class="card-header py-3 <?= $bg_d ?>">
-              <h6 class="font-weight-bold <?= $txt_wr ?>" style="display: inline-block; margin-right: 1em;">Daftar Pengaturan <?=$title?></h6>
+              <h6 class="font-weight-bold <?= $txt_wr ?>" style="display: inline-block; margin-right: 1em;">Daftar Pengaturan <?= $title ?></h6>
               <div class="form-row" style="display: inline-flex; min-width: 50%;">
                 <div class="col-2">
                   <a href="<?php echo current_url() ?>" class="btn btn-success btn-icon-split btn-sm">
@@ -80,6 +90,12 @@ if (isset($_COOKIE['txt'])) {
                   </a>
                 </div>
               </div>
+              <a href="<?php echo base_url() ?>" class="btn btn-info btn-icon-split btn-sm float-right">
+                <span class="icon text-white-50">
+                  <i class="fas fa-globe"></i>
+                </span>
+                <span class="text">Website</span>
+              </a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -88,14 +104,14 @@ if (isset($_COOKIE['txt'])) {
                     <tr>
                       <th width="5%">No</th>
                       <th>Keterangan</th>
-                      <th style="width:100px;">Aksi</th>
+                      <th style="width:100px;">Ubah</th>
                     </tr>
                   </thead>
-                  <tfoot>
+                  <tfoot class="">
                     <tr>
                       <th width="5%">No</th>
                       <th>Keterangan</th>
-                      <th style="width:100px;">Aksi</th>
+                      <th style="width:100px;">Ubah</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -115,19 +131,33 @@ if (isset($_COOKIE['txt'])) {
                     <tr>
                       <td class="align-middle text-center"><?= $no++ ?></td>
                       <td>
-                        <b>Tema :</b><br>
-                        Anda dapat mengubah tema menjadi tema gelap
-                        ataupun tema terang
+                        <b>Umum :</b><br>
+                        Anda dapat mengubah nama web, alamat, dan sosial media
                       </td>
                       <td class="align-middle text-center">
-                        <a onclick="themeConfirm('<?php echo base_url($url) ?>')" href="#!" class="btn btn-<?= $style ?> btn-icon-split btn-sm">
-                          <span class="icon text-white-50">
-                            <i class="fas fa-adjust"></i>
-                          </span>
-                          <span class="text"><?= $text ?></span>
-                        </a>
+                        <a href="<?php echo base_url('admin/pengaturan/web/umum/') ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
                       </td>
-                    </tr>                    
+                    </tr>
+                    <tr>
+                      <td class="align-middle text-center"><?= $no++ ?></td>
+                      <td>
+                        <b>Logo :</b><br>
+                        Anda dapat mengubah logo web
+                      </td>
+                      <td class="align-middle text-center">
+                        <a href="<?php echo base_url('admin/pengaturan/web/logo/') ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="align-middle text-center"><?= $no++ ?></td>
+                      <td>
+                        <b>Icon :</b><br>
+                        Anda dapat mengubah icon web
+                      </td>
+                      <td class="align-middle text-center">
+                        <a href="<?php echo base_url('admin/pengaturan/web/icon/') ?>" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -172,7 +202,7 @@ if (isset($_COOKIE['txt'])) {
       $('#themeModal').modal();
     }
     window.setTimeout(function() {
-      $(".alert").fadeTo(500, 0).slideUp(500, function() {
+      $(".alert").fadeTo(2000, 0).slideUp(500, function() {
         $(this).remove();
       });
     }, 1000);

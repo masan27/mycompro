@@ -462,7 +462,7 @@ hr {
     margin: 0 0 1.75em;
 }
 ul, li{
-	list-style: none;
+	list-style: initial;
 	margin: 0;
 	padding:0;
 }

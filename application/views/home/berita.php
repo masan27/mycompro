@@ -17,7 +17,7 @@
     <div class="col-md-6">
         <div class="event-items">
             <div class="event-img">
-                <a href="<?php echo base_url('berita/read/' . $berita->slug_berita); ?>"><img style="width:570px;height:300px;" src="<?php echo base_url('assets/upload/image/thumbs/' . $berita->gambar); ?>" alt="upcoming-events-img-1" class="img-responsive" /></a>
+                <a href="<?php echo base_url('berita/read/' . $berita->slug_berita); ?>"><img style="width:570px;height:300px;" src="<?php echo base_url('upload/image/thumbs/' . $berita->gambar); ?>" alt="upcoming-events-img-1" class="img-responsive" /></a>
                 <div class="date-box">
                     <h3><?php echo date('d', strtotime($berita->tanggal_publish)); ?></h3>
                     <h5><?php echo date('M', strtotime($berita->tanggal_publish)); ?></h5>

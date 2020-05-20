@@ -12,7 +12,7 @@
 <?php $i=1; foreach($slider as $slider): ?>
 <div class="item <?php if($i==1) { echo 'active'; } ?>">
     <div class="slider-item">
-        <img src="<?php echo base_url('assets/upload/image/'.$slider->gambar); ?>" alt="bg-slider-2">
+        <img src="<?php echo base_url('upload/image/'.$slider->gambar); ?>" alt="bg-slider-2">
         <div class="slider-content-area">
             <div class="container">
                 <div class="row">
@@ -20,12 +20,10 @@
                     <!-- .col-md-6 -->
                     <div class="col-md-6">
                         <div class="slider-content">
-                            <!-- <h3><?php echo $site->namaweb ?></h3> -->
                             <h2><?php echo $slider->judul_galeri ?></h2>
-                            <p><?php echo strip_tags($slider->isi) ?></p>
-                            <div class="slider-btn">
+                            <!-- <div class="slider-btn">
                                 <a href="<?php echo $slider->website ?>" class="btn btn-default">Baca selengkapnya...</a>
-                            </div>
+                            </div> -->
                             <!-- .slider-btn -->
                         </div>
                         <!-- .carousel-caption -->

@@ -14,11 +14,11 @@ if (isset($_COOKIE['txt'])) {
 
 	<!-- <div style="position: sticky; top: 1px; position: -webkit-sticky;"> -->
 	<!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#"> -->
-		<!-- Sidebar - Brand -->
-		<!-- <div class="sidebar-brand-icon rotate-n-15">
+	<!-- Sidebar - Brand -->
+	<!-- <div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div> -->
-				<img src="<?= $this->website->icon() ?>" alt="<?= $this->website->namaweb() ?>" class="img img-responsive logo-app" alt="My-Logo">
+	<img src="<?= $this->website->icon() ?>" alt="<?= $this->website->namaweb() ?>" class="img img-responsive logo-app" alt="My-Logo">
 	<!-- </a> -->
 
 	<!-- Divider -->
@@ -39,49 +39,36 @@ if (isset($_COOKIE['txt'])) {
 		Interface
 	</div>
 
-		<li class="nav-item <?php echo $this->uri->segment(2) == 'berita' ? 'active' : '' ?>">
-			<a class="nav-link menu" href="<?php echo site_url('admin/berita') ?>">
-				<i class="fas fa-fw fa-newspaper"></i>
-				<span>Konten</span></a>
-		</li>
+	<li class="nav-item <?php echo $this->uri->segment(2) == 'berita' ? 'active' : '' ?>">
+		<a class="nav-link menu" href="<?php echo site_url('admin/berita') ?>">
+			<i class="fas fa-fw fa-newspaper"></i>
+			<span>Konten</span></a>
+	</li>
 
-		<li class="nav-item <?php echo $this->uri->segment(2) == 'galeri' ? 'active' : '' ?>">
-			<a class="nav-link menu" href="<?php echo site_url('admin/galeri') ?>">
-				<i class="far fa-fw fa-image"></i>
-				<span>Galeri</span></a>
-		</li>
+	<li class="nav-item <?php echo $this->uri->segment(2) == 'galeri' ? 'active' : '' ?>">
+		<a class="nav-link menu" href="<?php echo site_url('admin/galeri') ?>">
+			<i class="far fa-fw fa-image"></i>
+			<span>Galeri</span></a>
+	</li>
 
-		<li class="nav-item <?php echo $this->uri->segment(2) == 'video' ? 'active' : '' ?>">
-			<a class="nav-link menu" href="<?php echo site_url('admin/video') ?>">
-				<i class="fab fa-fw fa-youtube"></i>
-				<span>Video</span></a>
-		</li>
+	<li class="nav-item <?php echo $this->uri->segment(2) == 'video' ? 'active' : '' ?>">
+		<a class="nav-link menu" href="<?php echo site_url('admin/video') ?>">
+			<i class="fab fa-fw fa-youtube"></i>
+			<span>Video</span></a>
+	</li>
 
-		<li class="nav-item <?php echo $this->uri->segment(2) == 'download' ? 'active' : '' ?>">
-			<a class="nav-link menu" href="<?php echo site_url('admin/download') ?>">
-				<i class="fas fa-fw fa-download"></i>
-				<span>File Download</span></a>
-		</li>
+	<li class="nav-item <?php echo $this->uri->segment(2) == 'download' ? 'active' : '' ?>">
+		<a class="nav-link menu" href="<?php echo site_url('admin/download') ?>">
+			<i class="fas fa-fw fa-download"></i>
+			<span>File Download</span></a>
+	</li>
 
 
-		<li class="nav-item <?php echo strstr($this->uri->segment(2), 'pengaturan') ? 'active' : '' ?>">
-			<a class="nav-link <?php echo strstr($this->uri->segment(2), 'pengaturan') ? '' : 'collapsed' ?>" href="#" data-toggle="collapse" data-target="#collapsePengaturan" aria-expanded="true" aria-controls="collapsePengaturan">
-				<i class="fas fa-fw fa-cog"></i>
-				<span>Pengaturan</span></a>
-			</a>
-			<div id="collapsePengaturan" class="collapse <?php echo strstr($this->uri->segment(2), 'pengaturan') ? 'show' : '' ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-				<div class="<?= $bg_d ?> py-2 collapse-inner rounded">
-					<a class="collapse-item <?= $txt ?> <?php echo strstr($this->uri->segment(3), 'web') ? 'active' : '' ?>" href="<?php echo site_url('admin/pengaturan/web') ?>">Web</a>
-					<a class="collapse-item <?= $txt ?> <?php echo strstr($this->uri->segment(3), 'app') ? 'active' : '' ?>" href="<?php echo site_url('admin/pengaturan/app') ?>">Aplikasi</a>
-				</div>
-			</div>
-		</li>
-		
-		<!-- <li class="nav-item <?php echo $this->uri->segment(2) == 'laporan' ? 'active' : '' ?>">
-			<a class="nav-link menu" href="<?php echo site_url('admin/laporan/' . date('Y-m-d') . '/' . date('Y-m-d')) ?>">
-				<i class="fas fa-fw fa-file-alt"></i>
-				<span>Laporan</span></a>
-		</li>		 -->
+	<li class="nav-item <?php echo $this->uri->segment(2) == 'pengaturan' ? 'active' : '' ?>">
+		<a class="nav-link menu" href="<?php echo site_url('admin/pengaturan') ?>">
+			<i class="fas fa-fw fa-cog"></i>
+			<span>Pengaturan</span></a>
+	</li>
 
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">

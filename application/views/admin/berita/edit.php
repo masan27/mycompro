@@ -22,7 +22,7 @@ if (isset($_COOKIE['txt'])) {
 <head>
   <?php $this->load->view("admin/_partials/head.php") ?>
   <style>
-    .custom-file-label{
+    .custom-file-label {
       top: 32px !important;
     }
   </style>
@@ -73,6 +73,9 @@ if (isset($_COOKIE['txt'])) {
             </div>
           </div>
 
+            <!-- Form -->
+            <?php  echo form_open_multipart(base_url('admin/berita/edit/' . $berita->id_berita)); ?>
+
           <!-- DataTales -->
           <div class="card shadow mb-4 <?= $bg_s . ' ' . $txt ?>">
             <div class="card-header py-3 <?= $bg_d ?>">
@@ -83,7 +86,7 @@ if (isset($_COOKIE['txt'])) {
               ?>
               <?php
               // Validasi error
-              echo validation_errors('<div class="alert alert-warning">', '</div>');              
+              echo validation_errors('<div class="alert alert-warning">', '</div>');
 
               // Error upload
               if (isset($error)) {
@@ -91,16 +94,13 @@ if (isset($_COOKIE['txt'])) {
                 echo $error;
                 echo '</div>';
               }
-
-              // Form open
-              echo form_open_multipart(base_url('admin/berita/edit/' . $berita->id_berita));
               ?>
               <div class="row">
                 <div class="col-md-8">
 
                   <div class="form-group form-group-lg">
                     <label>Judul Konten</label>
-                    <input type="text" name="judul_berita" class="form-control" placeholder="Judul Konten" required="required" value="<?php echo set_value('judul_berita', $berita->judul_berita ) ?>">
+                    <input type="text" name="judul_berita" class="form-control" placeholder="Judul Konten" required="required" value="<?php echo set_value('judul_berita', $berita->judul_berita) ?>">
                   </div>
 
                 </div>
@@ -109,7 +109,7 @@ if (isset($_COOKIE['txt'])) {
 
                   <div class="form-group form-group-lg">
                     <label>Icon Konten</label>
-                    <input type="text" name="icon" class="form-control" placeholder="Icon Konten" value="<?php echo set_value('icon', $berita->icon ) ?>">
+                    <input type="text" name="icon" class="form-control" placeholder="Icon Konten" value="<?php echo set_value('icon', $berita->icon) ?>">
                   </div>
 
                 </div>
@@ -189,13 +189,6 @@ if (isset($_COOKIE['txt'])) {
                   </div>
                 </div>
 
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>Urutan</label>
-                    <input type="number" name="urutan" class="form-control" placeholder="Urutan" value="<?php echo set_value('urutan', $berita->urutan ) ?>">
-                  </div>
-                </div>
-
                 <div class="col-md-12">
 
                   <div class="form-group">
@@ -210,73 +203,74 @@ if (isset($_COOKIE['txt'])) {
                         <!-- <a data-toggle="modal" class="btn btn-info btn-xs" href="<?php echo base_url('admin/berita/gambar') ?>" data-target="#gambar"><i class="fa fa-download"></i> Attach Gambar</a> -->
 
                       </sup></label>
-                    <textarea name="isi" class="form-control" id="isi" placeholder="Isi berita" placeholder="Isi berita"><?php echo $berita->isi ?></textarea>
-                  </div>
-
-                  <div class="form-group text-right ">
-                    <button type="submit" name="submit" class="btn btn-success btn-lg"><i class="fa fa-save"></i> Simpan Data</button>
-                    <a href="<?= base_url('admin/berita') ?>" class="btn btn-default btn-lg <?= $bg_d . ' ' . $txt ?>">
-                      <span class="icon text-white-50">
-                        <i class="fas fa-window-close"></i>
-                      </span>
-                      <span class="text">Tutup</span>
-                    </a>
+                    <textarea name="isi" class="form-control" id="isi" placeholder="Isi berita" placeholder="Isi berita"><?php echo set_value('isi', $berita->isi) ?></textarea>
                   </div>
 
                 </div>
-
-                <?php
-                // Form close
-                echo form_close();
-                ?>               
-
               </div>
+              <div class="card-footer py-3 <?= $bg_s ?>">
+                <button type="submit" class="btn btn-success btn-icon-split btn-sm">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-save"></i>
+                  </span>
+                  <span class="text">Simpan</span>
+                </button>
+                <a href="<?php echo base_url('admin/berita/') ?>" class="btn <?= $bg_d . ' ' . $txt ?> btn-icon-split btn-sm">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-window-close"></i>
+                  </span>
+                  <span class="text">Tutup</span>
+                </a>
+              </div>
+              <?php
+              // Form close
+              echo form_close();
+              ?>
             </div>
+
           </div>
+          <!-- /.container-fluid -->
 
         </div>
-        <!-- /.container-fluid -->
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <?php $this->load->view("admin/_partials/footer.php") ?>
+        <!-- End of Footer -->
 
       </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <?php $this->load->view("admin/_partials/footer.php") ?>
-      <!-- End of Footer -->
+      <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
 
-  </div>
-  <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <?php $this->load->view("admin/_partials/scrolltop.php") ?>
 
-  <!-- Scroll to Top Button-->
-  <?php $this->load->view("admin/_partials/scrolltop.php") ?>
+    <!-- Logout Modal-->
+    <?php $this->load->view("admin/_partials/modal.php") ?>
 
-  <!-- Logout Modal-->
-  <?php $this->load->view("admin/_partials/modal.php") ?>
+    <!-- Script -->
+    <?php $this->load->view("admin/_partials/js.php") ?>
 
-  <!-- Script -->
-  <?php $this->load->view("admin/_partials/js.php") ?>
+    <!-- Page level custom scripts -->
+    <link href="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
+    <script type="text/javascript" defer src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
+    <script type="text/javascript" defer src="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.js') ?>"></script>
+    <script type="text/javascript" defer src="<?php echo base_url('js/demo/datatables-demo.js') ?>"></script>
+    <script>
+      window.setTimeout(function() {
+        $(".alert").fadeTo(5000, 0).slideUp(500, function() {
+          $(this).remove();
+        });
+      }, 1000);
 
-  <!-- Page level custom scripts -->
-  <link href="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.css') ?>" rel="stylesheet">
-  <script type="text/javascript" defer src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js') ?>"></script>
-  <script type="text/javascript" defer src="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.js') ?>"></script>
-  <script type="text/javascript" defer src="<?php echo base_url('js/demo/datatables-demo.js') ?>"></script>
-  <script>
-    window.setTimeout(function() {
-      $(".alert").fadeTo(5000, 0).slideUp(500, function() {
-        $(this).remove();
+      document.querySelector('.custom-file-input').addEventListener('change', function(e) {
+        var fileName = document.getElementById("gambar").files[0].name;
+        var nextSibling = e.target.nextElementSibling
+        nextSibling.innerText = fileName
       });
-    }, 1000);
-
-    document.querySelector('.custom-file-input').addEventListener('change', function(e) {
-      var fileName = document.getElementById("gambar").files[0].name;
-      var nextSibling = e.target.nextElementSibling
-      nextSibling.innerText = fileName
-    });
-  </script>
+    </script>
 
 </body>
 

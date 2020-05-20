@@ -109,8 +109,8 @@ class Galeri extends CI_Controller
 
 							// Proses hapus gambar
 							if ($galeri->gambar != "") {
-								unlink('./assets/upload/image/' . $galeri->gambar);
-								unlink('./assets/upload/image/thumbs/' . $galeri->gambar);
+								unlink('./upload/image/' . $galeri->gambar);
+								unlink('./upload/image/thumbs/' . $galeri->gambar);
 							}
 							// End hapus gambar
 
@@ -220,8 +220,8 @@ class Galeri extends CI_Controller
 			for ($i = 0; $i < sizeof($id_galerinya); $i++) {
 				$galeri 	= $this->galeri_model->detail($id_galerinya[$i]);
 				if ($galeri->gambar != '') {
-					unlink('./assets/upload/galeri/' . $galeri->gambar);
-					unlink('./assets/upload/galeri/thumbs/' . $galeri->gambar);
+					unlink('./upload/galeri/' . $galeri->gambar);
+					unlink('./upload/galeri/thumbs/' . $galeri->gambar);
 				}
 				$data = array('id_galeri'	=> $id_galerinya[$i]);
 				$this->galeri_model->delete($data);
@@ -240,8 +240,8 @@ class Galeri extends CI_Controller
 		// Proses hapus gambar
 		if ($galeri->gambar == "") {
 		} else {
-			unlink('./assets/upload/image/' . $galeri->gambar);
-			unlink('./assets/upload/image/thumbs/' . $galeri->gambar);
+			unlink('./upload/image/' . $galeri->gambar);
+			unlink('./upload/image/thumbs/' . $galeri->gambar);
 		}
 		// End hapus gambar
 		$data = array('id_galeri'	=> $id_galeri);

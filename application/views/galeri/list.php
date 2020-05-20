@@ -4,7 +4,6 @@
                     <h2><?php //echo $title ?> GALERI FOTO</h2>
                 </div>
                 <div class="row">
-                <?php echo json_encode($galeri) ?>
                     <div class="recent-project photo-gallery">
                         <div id="filters" class="button-group ">
                             <button class="button is-checked" data-filter="*">show all</button>
@@ -19,12 +18,12 @@
                                     <div class="portfolio-img">
                                         <div class="overlay-project"></div>
                                         <!-- .overlay-project -->
-                                        <img src="<?php echo base_url('assets/upload/image/thumbs/'.$galeri->gambar) ?>" alt="recent-project-img-1" class="img img-fluid img-thumbnail">
+                                        <img src="<?php echo base_url('upload/image/thumbs/'.$galeri->gambar) ?>" alt="recent-project-img-1" class="img img-fluid img-thumbnail">
                                         <div class="project-plus">
-                                            <a href="<?php echo base_url('assets/upload/image/'.$galeri->gambar) ?>" data-rel="lightcase:myCollection"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                            <a href="<?php echo base_url('upload/image/'.$galeri->gambar) ?>" data-rel="lightcase:myCollection"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                         </div>
                                         <div class="recent-project-content">
-                                            <p><a href="#"><?php echo $galeri->judul_galeri; ?></a></p>
+                                            <p><a href="#!"><?php echo $galeri->judul_galeri; ?></a></p>
                                         </div>
                                         <!-- .latest-port-content -->
                                     </div>
