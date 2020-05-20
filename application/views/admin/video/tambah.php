@@ -33,7 +33,7 @@ if (isset($_COOKIE['txt'])) {
           <div class="col-md-6">
             <div class="form-group">
               <label>Judul Video</label>
-              <input type="text" name="judul" class="form-control" value="<?php echo set_value('judul') ?>" required placeholder="Judul Video">
+              <input type="text" name="judul" class="form-control" value="<?php echo set_value('judul') ?>" placeholder="Judul Video">
             </div>
           </div>
 
@@ -50,7 +50,7 @@ if (isset($_COOKIE['txt'])) {
           <div class="col-md-12">
             <div class="form-group">
               <label>Kode Video dari Youtube</label>
-              <input type="text" name="video" required class="form-control" placeholder="Kode video dari Youtube" value="<?php echo set_value('video') ?>">
+              <input type="text" name="video" class="form-control" placeholder="Kode video dari Youtube" value="<?php echo set_value('video') ?>">
               <span class="text-warning"> https://www.youtube.com/watch?v=xxxxxxxxxx</span>
             </div>
           </div>
