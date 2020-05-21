@@ -5,14 +5,19 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1">
             <div class="single-event-item">
-              <?php if($berita->gambar != "" || $berita->gambar != NULL) { ?>
+              <?php if ($berita->gambar != "" || $berita->gambar != NULL) : ?>
                 <div class="single-event-img">
-                  <img style="width: 100%;height: 450px;" src="<?php echo base_url('assets/upload/image/' . $berita->gambar); ?>" alt="single-event-img-1" class="img-responsive" />
+                  <img style="width: 100%;height: 450px;" src="<?php echo base_url('upload/image/' . $berita->gambar); ?>" alt="single-event-img-1" class="img-responsive" />
                 </div>
-              <?php } ?>
+              <?php else : ?>
+                <div class="single-event-img">
+                <i class="<?=$berita->icon?> fa-10x text-info"></i>
+                </div>
+              <?php endif; ?>
               <!-- .single-event-img -->
               <div class="single-event-content">
-                <h3><?php echo $berita->judul_berita; ?></h3><hr>
+                <h3><?php echo $berita->judul_berita; ?></h3>
+                <hr>
                 <?php echo $berita->isi; ?>
               </div>
               <!-- .single-event-content -->

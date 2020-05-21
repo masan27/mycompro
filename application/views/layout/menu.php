@@ -1,6 +1,5 @@
 <?php 
-$site                       = $this->konfigurasi_model->listing(); 
-$nav_profil                 = $this->nav_model->nav_profil();
+$site                       = $this->konfigurasi_model->listing();
 ?>
 <!-- Start Menu -->
 <div class="bg-main-menu menu-scroll">
@@ -26,10 +25,13 @@ $nav_profil                 = $this->nav_model->nav_profil();
             <li><a href="<?php echo base_url() ?>" class="<?php echo $this->uri->segment(1) == '' ? 'active' : '' ?>">BERANDA</a></li>
 
             <!-- Berita -->
-            <li><a href="<?php echo base_url('berita') ?>" class="<?php echo $this->uri->segment(1) == 'berita' ? 'active' : '' ?>">BERITA</a></li>            
+            <li><a href="<?php echo base_url('berita') ?>" class="<?php if ($this->uri->segment(1) == 'berita' && $this->uri->segment(2) == '') echo 'active'; ?>">BERITA</a></li>            
 
             <!-- Profil -->
-            <li><a href="<?php echo base_url('berita/profil/'.$nav_profil->slug_berita) ?>" class="<?php echo $this->uri->segment(2) == 'profil' ? 'active' : '' ?>">PROFIL</a></li>
+            <li><a href="<?php echo base_url('berita/profil') ?>" class="<?php echo $this->uri->segment(2) == 'profil' ? 'active' : '' ?>">PROFIL</a></li>
+            
+            <!-- Layanan -->
+            <li><a href="<?php echo base_url('berita/layanan/') ?>" class="<?php echo $this->uri->segment(2) == 'layanan' ? 'active' : '' ?>">Layanan</a></li>
 
             <!-- Galeri -->
             <li><a href="<?php echo base_url('galeri') ?>" class="<?php echo $this->uri->segment(1) == 'galeri' ? 'active' : '' ?>">GALERI</a></li>
@@ -51,8 +53,8 @@ $nav_profil                 = $this->nav_model->nav_profil();
                 <i class="fa fa-times second_click" aria-hidden="true" style="display: none;"></i>
             </div>
             <div class="search-box-text">
-                <form action="http://demos.codexcoder.com/labartisan/html/GreenForest/search">
-                    <input type="text" name="search" id="all-search" placeholder="Search Here">
+                <form action="<?=base_url('berita/cari')?>" method="get">
+                    <input type="text" name="s" id="all-search" placeholder="Search Here">
                 </form>
             </div>
         </div>

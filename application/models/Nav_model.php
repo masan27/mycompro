@@ -97,6 +97,15 @@ class Nav_model extends CI_Model
 		return $query->result();
 	}
 
+	// Navigasi kategori berita
+	public function nav_kategori_berita()
+	{
+		$this->db->select('*');
+		$this->db->from('kategori');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	// Listing data
 	public function nav_kategori_statistik()
 	{

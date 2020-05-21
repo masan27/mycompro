@@ -70,7 +70,10 @@ class Berita_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('berita');
-		$this->db->where(array(	'berita.status_berita'	=> 'Publish'));
+		$this->db->where(array(	
+			'berita.status_berita'	=> 'Publish',
+			'berita.jenis_berita'	=> 'Berita'
+		));
 		$this->db->order_by('hits','DESC');
 		$this->db->limit(20);
 		$query = $this->db->get();
@@ -196,6 +199,45 @@ class Berita_model extends CI_Model {
 		$this->db->limit($limit,$start);
 		$query = $this->db->get();
 		return $query->result();
+	}
+
+	// Listing berita
+	public function layanan($limit,$start) {
+		$this->db->select('berita.*, 
+					users.nama, 
+					kategori.nama_kategori, kategori.slug_kategori,
+					kategori.slug_kategori
+					');
+		$this->db->from('berita');
+		// Join dg 2 tabel
+		$this->db->join('kategori','kategori.id_kategori = berita.id_kategori','LEFT');
+		$this->db->join('users','users.id_user = berita.id_user','LEFT');
+		// End join
+		$this->db->where(array(	'berita.status_berita'	=> 'Publish',
+								'berita.jenis_berita'	=> 'Layanan'));
+		$this->db->order_by('berita.tanggal_publish','ASC');
+		$this->db->limit($limit,$start);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	// Listing berita
+	public function profil() {
+		$this->db->select('berita.*, 
+					users.nama, 
+					kategori.nama_kategori, kategori.slug_kategori,
+					kategori.slug_kategori
+					');
+		$this->db->from('berita');
+		// Join dg 2 tabel
+		$this->db->join('kategori','kategori.id_kategori = berita.id_kategori','LEFT');
+		$this->db->join('users','users.id_user = berita.id_user','LEFT');
+		// End join
+		$this->db->where(array(	'berita.status_berita'	=> 'Publish',
+								'berita.jenis_berita'	=> 'Profil'));
+		$this->db->order_by('berita.tanggal_publish','ASC');		
+		$query = $this->db->get();
+		return $query->row();
 	}
 
 	// Listing total

@@ -53,6 +53,12 @@ $route['default_controller'] = 'home/index';
 $route['404_override'] = 'home/oops';
 $route['translate_uri_dashes'] = FALSE;
 
+//? 404
+$route['oops'] = 'home/oops';
+
+//? Custom for web dev
+$route['berita/layanan/baca/(:any)'] = 'berita/baca_layanan/$1';
+
 //? custom for form ajax
 $route['admin/galeri/(:num)'] = 'admin/galeri/index/$1';
 $route['admin/video/(:num)'] = 'admin/video/index/$1';

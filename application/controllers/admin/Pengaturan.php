@@ -5,7 +5,11 @@ class Pengaturan extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('m_auth');
+    $url_pengalihan = str_replace(base_url(), '', current_url());
+    $this->session->set_userdata('pengalihan', $url_pengalihan);
+    // Ambil check login dari simple_login
+    $this->simple_login->check_login();
+    $this->log_user->add_log();
   }
 
   public function index()
@@ -49,5 +53,4 @@ class Pengaturan extends CI_Controller
     set_cookie('tbl_drk', 'table-dark', time() + (86400 * 30 * 6));
     redirect(base_url('admin/pengaturan'));
   }
-
 }

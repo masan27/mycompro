@@ -6,9 +6,9 @@
                     <div class="col-md-8">
 
                         <div class="blog-items">
-                            <?php if($berita->gambar !="") { ?>
+                            <?php if ($berita->gambar != "") { ?>
                                 <div class="blog-img" style="width:770px;height:370px;">
-                                    <a href="#"><img src="<?php echo base_url('assets/upload/image/'.$berita->gambar) ?>" alt="blog-img-10" class="img-responsive" /></a>
+                                    <a href="#"><img src="<?php echo base_url('upload/image/' . $berita->gambar) ?>" alt="blog-img-10" class="img-responsive" /></a>
                                 </div>
                             <?php } ?>
                             <!-- .blog-img -->
@@ -42,13 +42,29 @@
                     <div class="col-md-4">
                         <div class="sidebar">
                             <div class="widget">
+                                <h4 class="sidebar-widget-title">Kategori</h4>
+                                <div class="widget-content">
+                                    <ul class="popular-news-option">
+                                        <?php foreach ($kategori as $kategori) { ?>
+                                            <li>
+                                                <a href="<?=base_url('berita/kategori/'.$kategori->slug_kategori)?>"><i class="text-info far fa-dot-circle fa-sm"></i> <strong><?=$kategori->nama_kategori?></strong></a>
+                                            </li>
+                                        <?php } ?>
+                                    </ul>
+
+                                </div>
+                                <!-- .widget-content -->
+                            </div>
+                        </div>
+                        <div class="sidebar">
+                            <div class="widget">
                                 <h4 class="sidebar-widget-title">Berita Lainnya</h4>
                                 <div class="widget-content">
                                     <ul class="popular-news-option">
-                                        <?php foreach($listing as $listing) { ?>
+                                        <?php foreach ($listing as $listing) { ?>
                                             <li>
                                                 <div class="popular-news-img" style="width: 80px; height: 80px;">
-                                                    <a href="#"><img src="<?php if($listing->gambar=="") { echo base_url('assets/upload/image/thumbs/'.$site->icon); }else{ echo base_url('assets/upload/image/thumbs/'.$listing->gambar); } ?>" alt="popular-news-img-1" /></a>
+                                                    <a href="#"><img src="<?php echo base_url('upload/image/thumbs/' . $listing->gambar); ?>" alt="popular-news-img-1" /></a>
                                                 </div>
                                                 <!-- .popular-news-img -->
                                                 <div class="popular-news-contant">

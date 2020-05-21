@@ -6,11 +6,12 @@ class Dashboard extends CI_Controller
 
     public function __construct()
     {
-        parent::__construct();
-        $this->load->model('m_auth');
+        parent::__construct();        
         $url_pengalihan = str_replace(base_url(), '', current_url());
         $this->session->set_userdata('pengalihan', $url_pengalihan);
-
+        // Ambil check login dari simple_login
+		$this->simple_login->check_login();
+		$this->log_user->add_log();
         $this->load->model('dasbor_model');
     }
 

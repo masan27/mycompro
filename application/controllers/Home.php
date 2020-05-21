@@ -89,8 +89,8 @@ class Home extends CI_Controller
 
 		$data = array(
 			'title'				=> 'Not found',
-			'deskripsi'			=> $site->deskripsi,
-			'keywords'			=> $site->keywords,
+			'deskripsi'			=> '404',
+			'keywords'			=> '404',
 			'site'				=> $site,
 			'isi'				=> 'home/oops'
 		);
