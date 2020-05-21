@@ -22,7 +22,7 @@ class Home extends CI_Controller
 		$headline		= $this->berita_model->listing_headline();
 		$galeri 		= $this->galeri_model->galeri_home();
 		$kategori_galeri = $this->galeri_model->kategori();
-		$video 			= $this->video_model->home();		
+		$video 			= $this->video_model->homepage();		
 		$layanan 		= $this->nav_model->nav_layanan();
 		$profil 		= $this->nav_model->nav_profil();
 

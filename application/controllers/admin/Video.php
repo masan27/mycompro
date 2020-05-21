@@ -47,13 +47,13 @@ class Video extends CI_Controller
 		} else {
 			if ($id != false) {
 				$i = $this->input;
-				$url = str_replace('https://www.youtube.com/watch?v=','', $i->post('video'));
+				// $url = str_replace('https://www.youtube.com/watch?v=','', $i->post('video'));
 				$data = array(
 					'id_video'		=> $id,
 					'judul'			=> $i->post('judul'),
 					'posisi'		=> $i->post('posisi'),
 					'keterangan'	=> $i->post('keterangan'),
-					'video'			=> $url,
+					'video'			=> $i->post('video'),
 					'id_user'		=> $this->session->userdata('id_user')
 				);
 				$this->video_model->edit($data);
@@ -61,12 +61,12 @@ class Video extends CI_Controller
 				redirect(base_url('admin/video'));
 			} else {
 				$i = $this->input;
-				$url = str_replace('https://www.youtube.com/watch?v=','', $i->post('video'));
+				// $url = str_replace('https://www.youtube.com/watch?v=','', $i->post('video'));
 				$data = array(
 					'judul'			=> $i->post('judul'),
 					'posisi'		=> $i->post('posisi'),
 					'keterangan'	=> $i->post('keterangan'),
-					'video'			=> $url,
+					'video'			=> $i->post('video'),
 					'id_user'		=> $this->session->userdata('id_user')
 				);
 				$this->video_model->tambah($data);
@@ -78,18 +78,14 @@ class Video extends CI_Controller
 
 	// Proses
 	public function proses()
-	{
-		$site = $this->konfigurasi_model->listing();
+	{		
 		// PROSES HAPUS MULTIPLE
 		if (isset($_POST['hapus'])) {
 			$inp 				= $this->input;
 			$id_videonya		= $inp->post('id_video');
 
 			for ($i = 0; $i < sizeof($id_videonya); $i++) {
-				$video 	= $this->video_model->detail($id_videonya[$i]);
-				if ($video->gambar != '') {
-					unlink('./assets/upload/file/' . $video->gambar);
-				}
+				
 				$data = array('id_video'	=> $id_videonya[$i]);
 				$this->video_model->delete($data);
 			}

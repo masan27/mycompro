@@ -123,7 +123,7 @@ if (isset($_COOKIE['txt'])) {
                               <span class="checkmark"></span>
                             </div>
                         </td>
-                        <td class="video"> <iframe src="https://www.youtube.com/embed/<?php echo $video->video ?>"></iframe></td>
+                        <td class="video"> <iframe src="<?php echo str_replace('https://www.youtube.com/watch?v=','https://www.youtube.com/embed/',$video->video) ?>"></iframe></td>
                         <td>
                           <span class="<?= $txt_wr ?>"><?php echo $video->judul . ' ' ?></span> 
                           <br><small>Keterangan : <?php echo $video->keterangan ?></small>

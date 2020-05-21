@@ -24,9 +24,7 @@ if (isset($edit)) {
 
           <?php
           // Validasi error
-          echo validation_errors('<div class="alert alert-warning">', '</div>');
-
-          $url = 'https://www.youtube.com/watch?v=' . $edit->video;
+          echo validation_errors('<div class="alert alert-warning">', '</div>');          
 
           // Form buka 
           echo form_open(base_url('admin/video/' . $edit->id_video));
@@ -57,8 +55,7 @@ if (isset($edit)) {
             <div class="col-md-12">
               <div class="form-group">
                 <label>Kode Video dari Youtube</label>
-                <input type="text" name="video" required class="form-control" placeholder="Kode video dari Youtube" value="<?php echo set_value('video', $url) ?>">
-                <span class="text-warning"> https://www.youtube.com/watch?v=xxxxxxxxxx</span>
+                <input type="text" name="video" required class="form-control" placeholder="Kode video dari Youtube" value="<?php echo set_value('video', $edit->video) ?>">                
               </div>
             </div>
 

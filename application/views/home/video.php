@@ -1,5 +1,3 @@
-
-
 <!-- Start campaian video Section -->
 
 <section class="bg-compaian-video">
@@ -7,7 +5,15 @@
         <div class="container">
             <div class="row">
                 <div class="compaian-video">
-                    <a href="https://www.youtube.com/embed/3zF5-1I4Pw0" data-rel="lightcase:myCollection"><img src="<?php echo base_url() ?>assets/web/images/home02/video-icon.png" alt="video-icon" /></a>
+                    <?php
+                    if (preg_match("/youtube.com/", $video->video)) {
+                        $link = str_replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/', $video->video);
+                    }
+                    else{
+                        $link = $video->video;
+                    }                    
+                    ?>
+                    <a href="<?= $link ?>" data-rel="lightcase:myCollection"><img src="<?php echo base_url() ?>assets/pendukung/video-icon.png" alt="video-icon" /></a>
                     <h3>WATCH OUR LATEST CAMPAIGN VIDEO</h3>
                 </div>
                 <!-- .compaian-video -->

@@ -14,26 +14,27 @@ class Video_model extends CI_Model {
 		$this->db->order_by('id_video','DESC');
 		$query = $this->db->get();
 		return $query->result();
-	}
-	
-	// Listing
-	public function home() {
-		$this->db->select('*');
-		$this->db->from('video');
-		$this->db->order_by('id_video','DESC');
-		$this->db->order_by('urutan','DESC');
-		$query = $this->db->get();
-		return $query->result();
-	}
+	}	
 	
 	// Listing semua
 	public function video($limit,$start) {
 		$this->db->select('*');
 		$this->db->from('video');
 		$this->db->limit($limit, $start);
+		$this->db->where('posisi', 'Video');
 		$this->db->order_by('id_video','DESC');
 		$query = $this->db->get();
 		return $query->result();
+	}
+
+	// PageHome
+	public function homepage() {
+		$this->db->select('*');
+		$this->db->from('video');
+		$this->db->where('posisi', 'Homepage');
+		$this->db->order_by('id_video','DESC');
+		$query = $this->db->get();
+		return $query->row();
 	}
 	
 	// Listing semua
