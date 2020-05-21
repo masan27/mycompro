@@ -55,10 +55,6 @@ $site_info = $this->konfigurasi_model->listing();
   .nav li{
 	list-style: none;
   }
-  .social-box{
-	 right: 20%;
-	 position: relative;
-  }
   </style>
 </head>
 

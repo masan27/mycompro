@@ -2307,7 +2307,7 @@ section{
 	overflow: hidden;
 	padding: 5px 0;
 }
-.address li .fa{
+.address li .fa, .address li .fab{
 	float: left;
 	width: 36px;
 	height: 36px;
@@ -2971,12 +2971,12 @@ div#filters {
 ==========================================*/
 
 .bg-compaian-video{
-	background: url(../images/home02/bg-video-section.jpg) no-repeat fixed;
+	background: url(../../pendukung/loading.gif) no-repeat fixed;
     background-size: cover;
-    background-position: 48% 100%;
+    background-position: 48% 43%;
 }
 .compaian-video-overlay{
-	background: rgba(72, 142, 38, 0.74);
+	background: rgba(126, 24, 124, 0.74);
 }
 .compaian-video{
 	text-align: center;

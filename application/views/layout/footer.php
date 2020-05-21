@@ -56,13 +56,13 @@ $site = $this->konfigurasi_model->listing();
   <a href="tel:<?php echo $site->telepon ?>"><i class="fa fa-phone-alt"></i></a>
 </div>
 <div class="kontakwa">
-  <a href="https://wa.me/<?php echo str_replace('+', '', $site->hp) ?>?text=Saya%20tertarik%20untuk%20Menggunakan%20Layanan%20di%20Perusahan%20Anda.%20Apakah%20bisa%20dibantu?" class="topbar-social-item"><i class="fab fa-whatsapp"></i>
+  <a target="_blank" href="https://wa.me/<?php echo str_replace('+', '', $site->whatsapp) ?>?text=Saya%20tertarik%20untuk%20Menggunakan%20Layanan%20Anda.%20Apakah%20bisa%20dibantu?" class="topbar-social-item"><i class="fab fa-whatsapp"></i>
   </a>
 </div>
 <!-- END WA -->
 <?php
 $site           = $this->konfigurasi_model->listing();
-$nav_profil     = $this->nav_model->nav_profil();
+$nav_berita     = $this->nav_model->nav_berita();
 ?>
 <!-- Start Footer Section -->
 <footer>
@@ -91,7 +91,10 @@ $nav_profil     = $this->nav_model->nav_profil();
                     <li>
                       <i class="fa fa-envelope" aria-hidden="true"></i>
                       <span><?php echo $site->email ?></span>
-
+                    </li>
+                    <li>
+                      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                      <span><?php echo $site->whatsapp ?></span>
                     </li>
                   </ul>
                 </div>                                                
@@ -107,17 +110,17 @@ $nav_profil     = $this->nav_model->nav_profil();
                 </div>
                 <!-- .widgets-title -->
                 <ul class="latest-news">
-                  <?php foreach ($nav_profil as $nav_profil) { ?>
+                  <?php foreach ($nav_berita as $nav_berita) { ?>
                     <li>
                       <span class="thumbnail-img">
-                        <?php if ($nav_profil->gambar != "") { ?>
-                          <img src="<?php echo base_url('assets/pendukung/' . $nav_profil->gambar) ?>" alt="<?php echo $nav_profil->judul_berita ?>" class="img-responsive" />
+                        <?php if ($nav_berita->gambar != "") { ?>
+                          <img src="<?php echo base_url('upload/image/' . $nav_berita->gambar) ?>" alt="<?php echo $nav_berita->judul_berita ?>" class="img-responsive" />
                         <?php } else { ?>
-                          <img src="<?php echo base_url('assets/pendukung/' . $site->icon) ?>" alt="<?php echo $nav_profil->judul_berita ?>" class="img-responsive" />
+                          <img src="<?php echo base_url('assets/pendukung/' . $site->icon) ?>" alt="<?php echo $nav_berita->judul_berita ?>" class="img-responsive" />
                         <?php } ?>
                       </span>
                       <div class="thumbnail-content">
-                        <h5><a href="<?php echo base_url('berita/profil/' . $nav_profil->slug_berita) ?>"><?php echo $nav_profil->judul_berita ?></a></h5>
+                        <h5><a href="<?php echo base_url('berita/read/' . $nav_berita->slug_berita) ?>"><?php echo $nav_berita->judul_berita ?></a></h5>
                       </div>
                       <!-- .thumbnail-content -->
                     </li>
@@ -146,15 +149,7 @@ $nav_profil     = $this->nav_model->nav_profil();
           <div class="copyright-txt">
             <p>&copy; <?php echo date('Y') ?>. Powered By <a href="<?= base_url('kontak') ?>" title="About Me">TheCroc27</a></p>
           </div>
-          <!-- .copyright-txt -->
-          <div class="social-box">
-            <ul class="social-icon-rounded">
-              <li><a href="<?php echo $site->facebook ?>"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-              <li><a href="<?php echo $site->instagram ?>"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-              <li><a href="<?php echo $site->twitter ?>"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
-            </ul>
-          </div>
-          <!-- .social-box -->
+          <!-- .copyright-txt -->          
 
         </div>
         <!-- .footer-bottom -->

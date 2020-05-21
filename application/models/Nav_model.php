@@ -68,7 +68,7 @@ class Nav_model extends CI_Model
 		));
 		$this->db->order_by('id_berita', 'DESC');
 		$query = $this->db->get();
-		return $query->result();
+		return $query->row();
 	}
 
 	// Navigasi profil

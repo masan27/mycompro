@@ -34,7 +34,7 @@ $nav_layanan                = $this->nav_model->nav_layanan();
             <li><a href="<?php echo base_url('berita') ?>" class="<?php echo $this->uri->segment(1) == 'berita' ? 'active' : '' ?>">BERITA</a></li>            
 
             <!-- Profil -->
-            <li><a href="<?php echo base_url('profil') ?>" class="<?php echo $this->uri->segment(1) == 'profil' ? 'active' : '' ?>">PROFIL</a></li>
+            <li><a href="<?php echo base_url('berita/profil/'.$nav_profil->slug_berita) ?>" class="<?php echo $this->uri->segment(2) == 'profil' ? 'active' : '' ?>">PROFIL</a></li>
 
             <!-- Galeri -->
             <li><a href="<?php echo base_url('galeri') ?>" class="<?php echo $this->uri->segment(1) == 'galeri' ? 'active' : '' ?>">GALERI</a></li>
