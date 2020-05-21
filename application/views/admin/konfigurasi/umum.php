@@ -104,9 +104,14 @@ if (isset($_COOKIE['txt'])) {
                   </div>
 
                   <div class="form-group">
-                    <label>Email</label>
+                    <label>Email Utama</label>
                     <input type="email" name="email" placeholder="youremail@address.com" value="<?php echo set_value('email', $site->email) ?>" class="form-control" required>
                   </div>
+
+                  <div class="form-group">
+                    <label>Email Cadangan</label>
+                    <input type="email" name="email_cadangan" placeholder="youremail@address.com" value="<?php echo set_value('email_cadangan', $site->email_cadangan) ?>" class="form-control">
+                  </div>                  
 
                   <div class="form-group">
                     <label>Telepon</label>

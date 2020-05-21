@@ -51,7 +51,7 @@
                                 <i class="flaticon-message"></i>
                                 <div class="contact-content">
                                     <p><?php echo $site->email; ?></p>
-                                    <p><?php echo $site->email_cadangan; ?></p>
+                                    <!-- <p><?php echo $site->email_cadangan; ?></p> -->
                                 </div>
                             </li>
                         </ul>

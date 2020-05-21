@@ -11,8 +11,6 @@ class Home extends CI_Controller
 		$this->load->model('berita_model');
 		$this->load->model('galeri_model');
 		$this->load->model('video_model');
-		$this->load->model('agenda_model');
-		$this->load->model('agenda_model');
 		$this->load->model('nav_model');
 	}
 
@@ -24,8 +22,7 @@ class Home extends CI_Controller
 		$headline		= $this->berita_model->listing_headline();
 		$galeri 		= $this->galeri_model->galeri_home();
 		$kategori_galeri = $this->galeri_model->kategori();
-		$video 			= $this->video_model->home();
-		$agenda 		= $this->agenda_model->home();
+		$video 			= $this->video_model->home();		
 		$layanan 		= $this->nav_model->nav_layanan();
 		$profil 		= $this->nav_model->nav_profil();
 
@@ -66,9 +63,9 @@ class Home extends CI_Controller
 		$berita 	= $this->berita_model->berita($config['per_page'], $page);
 
 		$data = array(
-			'title'				=> $site->namaweb . ' - ' . $site->tagline,
-			'deskripsi'			=> $site->deskripsi,
-			'keywords'			=> $site->keywords,
+			'title'				=> 'Beranda',
+			'deskripsi'			=> 'Pembuatan Aplikasi WEB',
+			'keywords'			=> 'Web Programming',
 			'site'				=> $site,
 			'slider'			=> $slider,
 			'headline'			=> $headline,
@@ -77,8 +74,7 @@ class Home extends CI_Controller
 			'popup'				=> $popup,
 			'galeri'			=> $galeri,
 			'video'				=> $video,
-			'kategori_galeri'	=> $kategori_galeri,
-			'agenda'			=> $agenda,
+			'kategori_galeri'	=> $kategori_galeri,			
 			'layanan'			=> $layanan,
 			'profil'			=> $profil,
 			'isi'				=> 'home/list'

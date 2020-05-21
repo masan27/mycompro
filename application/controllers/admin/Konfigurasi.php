@@ -47,6 +47,7 @@ class Konfigurasi extends CI_Controller
 				'id_konfigurasi'	=> $i->post('id_konfigurasi'),
 				'namaweb'			=> $i->post('namaweb'),
 				'email'				=> $i->post('email'),
+				'email_cadangan'				=> $i->post('email_cadangan'),
 				'alamat'			=> $i->post('alamat'),
 				'telepon'			=> $i->post('telepon'),
 				'hp'				=> $i->post('hp'),
@@ -126,7 +127,7 @@ class Konfigurasi extends CI_Controller
 	}
 
 
-	//* Konfigurasi Icon
+	//* New Icon
 	public function icon()
 	{
 		$site = $this->konfigurasi_model->listing();

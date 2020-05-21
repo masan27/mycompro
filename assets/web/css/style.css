@@ -1777,6 +1777,8 @@ section{
 .carousel-control.left,
 .carousel-control.right{
 	background-image: none;
+	border-radius: 50%;
+	background: rgba(0,0,0,0.5);
 }
 .carousel-control.left{
 	left: 20px;
@@ -2976,7 +2978,7 @@ div#filters {
     background-position: 48% 43%;
 }
 .compaian-video-overlay{
-	background: rgba(126, 24, 124, 0.74);
+	background: rgb(198, 8, 243, 0.74);
 }
 .compaian-video{
 	text-align: center;

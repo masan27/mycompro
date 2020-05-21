@@ -1,11 +1,6 @@
 <?php 
 $site                       = $this->konfigurasi_model->listing(); 
-$site_nav                   = $this->konfigurasi_model->listing();
 $nav_profil                 = $this->nav_model->nav_profil();
-$nav_download               = $this->nav_model->nav_download();
-$nav_berita                 = $this->nav_model->nav_berita();
-$nav_agenda                 = $this->nav_model->nav_agenda();
-$nav_layanan                = $this->nav_model->nav_layanan();
 ?>
 <!-- Start Menu -->
 <div class="bg-main-menu menu-scroll">

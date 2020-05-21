@@ -10,8 +10,6 @@ class Berita extends CI_Controller
 		parent::__construct();
 		$this->load->model('berita_model');
 		$this->load->model('kategori_model');
-		$this->load->model('download_model');
-		$this->load->model('galeri_model');
 		// Tambahkan proteksi halaman
 		$url_pengalihan = str_replace(base_url(), '', current_url());
 		$this->session->set_userdata('pengalihan', $url_pengalihan);

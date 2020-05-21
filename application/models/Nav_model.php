@@ -10,53 +10,6 @@ class Nav_model extends CI_Model
 		$this->load->database();
 	}
 
-	// Menu utama
-	public function nav_menu()
-	{
-		$this->db->select('*');
-		$this->db->from('menu');
-		$this->db->order_by('urutan', 'ASC');
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	// Sub menu
-	public function nav_sub_menu($id_menu)
-	{
-		$this->db->select('*');
-		$this->db->from('sub_menu');
-		$this->db->where('id_menu', $id_menu);
-		$this->db->order_by('urutan', 'ASC');
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	// Listing
-	public function nav_anggota()
-	{
-		$this->db->select('anggota.*,
-							COUNT(staff.id_staff) AS total_staff,
-							provinsi.nama_provinsi');
-		$this->db->from('anggota');
-		$this->db->join('provinsi', 'provinsi.id_provinsi = anggota.id_provinsi', 'left');
-		$this->db->join('staff', 'staff.id_anggota = anggota.id_anggota', 'left');
-		$this->db->group_by('anggota.id_anggota');
-		$this->db->order_by('urutan', 'ASC');
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	public function nav_mitra()
-	{
-		$this->db->select('*');
-		$this->db->from('mitra');
-		$this->db->order_by('urutan', 'ASC');
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-
-
 	// Navigasi profil
 	public function nav_profil()
 	{
@@ -66,7 +19,7 @@ class Nav_model extends CI_Model
 			'jenis_berita'	=> 'Profil',
 			'status_berita'	=> 'Publish'
 		));
-		$this->db->order_by('id_berita', 'DESC');
+		$this->db->order_by('id_berita', 'DESC');		
 		$query = $this->db->get();
 		return $query->row();
 	}
@@ -80,7 +33,8 @@ class Nav_model extends CI_Model
 			'jenis_berita'	=> 'Layanan',
 			'status_berita'	=> 'Publish'
 		));
-		$this->db->order_by('id_berita', 'DESC');
+		$this->db->order_by('id_berita', 'ASC');
+		$this->db->limit(3);
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -113,18 +67,7 @@ class Nav_model extends CI_Model
 		$this->db->limit(8);
 		$query = $this->db->get();
 		return $query->result();
-	}
-
-	// listing 
-	public function nav_aplikasi()
-	{
-		$this->db->select('*');
-		$this->db->from('aplikasi');
-		$this->db->order_by('urutan', 'ASC');
-		$this->db->limit(20);
-		$query	=	$this->db->get();
-		return $query->result();
-	}
+	}	
 
 	// Listing
 	public function nav_video()
@@ -136,53 +79,7 @@ class Nav_model extends CI_Model
 		$this->db->limit(8);
 		$query = $this->db->get();
 		return $query->result();
-	}
-
-	// Listing
-	public function nav_agenda()
-	{
-		$this->db->select('*');
-		$this->db->from('agenda');
-		$this->db->order_by('mulai', 'DESC');
-		$this->db->limit(8);
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	// Kategori
-	public function nav_bidang()
-	{
-		$this->db->select('bidang.*, kategori_bidang.nama_kategori_bidang, users.first_name AS nama, 
-						kategori_bidang.slug_kategori_bidang');
-		$this->db->from('bidang');
-		// Join dg 2 tabel
-		$this->db->join('kategori_bidang', 'kategori_bidang.id_kategori_bidang = bidang.id_kategori_bidang');
-		$this->db->join('users', 'users.id = bidang.id_user', 'LEFT');
-		// End join
-		$this->db->where('status_bidang', 'Publish');
-		$this->db->group_by('bidang.id_kategori_bidang');
-		$this->db->order_by('id_bidang', 'DESC');
-		$query = $this->db->get();
-		return $query->result();
-	}
-
-	// Listing kategori_bidang
-	public function kategori_bidang($id_kategori_bidang)
-	{
-		$this->db->select('bidang.*, users.first_name AS nama, kategori_bidang.nama_kategori_bidang, kategori_bidang.slug_kategori_bidang');
-		$this->db->from('bidang');
-		// Join dg 2 tabel
-		$this->db->join('kategori_bidang', 'kategori_bidang.id_kategori_bidang = bidang.id_kategori_bidang', 'LEFT');
-		$this->db->join('users', 'users.id = bidang.id_user', 'LEFT');
-		// End join
-		$this->db->where(array(
-			'bidang.id_kategori_bidang'	=> $id_kategori_bidang,
-			'bidang.status_bidang'		=> 'Publish'
-		));
-		$this->db->order_by('id_bidang', 'DESC');
-		$query = $this->db->get();
-		return $query->result();
-	}
+	}		
 
 	// Navigasi berita
 	public function nav_berita()

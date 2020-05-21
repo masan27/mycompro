@@ -28,8 +28,6 @@ class Simple_login
 			$gambar 	= $user_login->gambar;
 			// Create session utk login
 			$this->CI->session->set_userdata('id_user',$id_user);
-			$this->CI->session->set_userdata('id_bagian',$id_bagian);
-			$this->CI->session->set_userdata('nama_bagian',$nama_bagian);
 			$this->CI->session->set_userdata('username',$username);
 			$this->CI->session->set_userdata('nama',$nama);
 			$this->CI->session->set_userdata('foto',$gambar);
@@ -57,8 +55,6 @@ class Simple_login
 	{
 		// Meng-unset semua session
 		$this->CI->session->unset_userdata('id_user');
-		$this->CI->session->unset_userdata('id_bagian');
-		$this->CI->session->unset_userdata('nama_bagian');
 		$this->CI->session->unset_userdata('username');
 		$this->CI->session->unset_userdata('nama');
 		$this->CI->session->unset_userdata('akses_level');
@@ -75,22 +71,10 @@ class Simple_login
 		if($this->CI->session->userdata('username') == "" && 
 			$this->CI->session->userdata('akses_level') == "")
 		{
-			$this->CI->session->set_flashdata('warning', 'Anda belum login');
+			$this->CI->session->set_flashdata('warning', 'Anda harus login terlebih dahulu');
 			redirect(base_url('login'),'refresh');
 		}
-	}
-
-	// Fungsi check login: seseorang sudah login atau belum
-	public function cek_login()
-	{
-		// Check status login (kita ambil status username dan akses level)
-		if($this->CI->session->userdata('username') == "" && 
-			$this->CI->session->userdata('akses_level') == "")
-		{
-			$this->CI->session->set_flashdata('warning', 'Anda belum login');
-			redirect(base_url('login'),'refresh');
-		}
-	}
+	}	
 }
 
 /* End of file Simple_login.php */
