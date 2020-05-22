@@ -7,7 +7,7 @@
 
                         <div class="blog-items">
                             <?php if ($berita->gambar != "") { ?>
-                                <div class="blog-img" style="width:770px;height:370px;">
+                                <div class="blog-img">
                                     <a href="#"><img src="<?php echo base_url('upload/image/' . $berita->gambar) ?>" alt="blog-img-10" class="img-responsive" /></a>
                                 </div>
                             <?php } ?>

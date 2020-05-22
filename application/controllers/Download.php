@@ -54,39 +54,16 @@ class Download extends CI_Controller {
 		$this->load->view('layout/wrapper', $data, FALSE);
 	}
 
-	// Read download detail
-	public function read($slug_download)	{
-		$site 		= $this->konfigurasi_model->listing();
-		$download 	= $this->download_model->read($slug_download);
-
-		if(count(array($download)) < 1) {
-			redirect(base_url('oops'),'refresh');
-		}
-
-
-
-		$listing 	= $this->download_model->listing_read();
-		$kategori 	= $this->nav_model->nav_download();
-
-		$data = array(	'title'		=> $download->judul_download,
-						'deskripsi'	=> $download->judul_download,
-						'keywords'	=> $download->judul_download,
-						'download'	=> $download,
-						'listing'	=> $listing,
-						'kategori'	=> $kategori,
-						'site'		=> $site,
-						'isi'		=> 'download/read');
-		$this->load->view('layout/wrapper', $data, FALSE);
-	}
-
-	// Unduh
-	public function unduh($id_download) {
-		$this->load->helper('download');
+	// Download file
+	public function unduh($id_download)
+	{
 		$download = $this->download_model->detail($id_download);
 		// Contents of photo.jpg will be automatically read
-		force_download('./assets/upload/file/'.$download->gambar, NULL);
-
+		$data = './upload/file/' . $download->gambar;
+		force_download($data, NULL);
 	}
+
+	
 }
 
 /* End of file Download.php */

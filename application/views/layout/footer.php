@@ -199,6 +199,16 @@ $nav_berita     = $this->nav_model->nav_berita();
   $(function() {
     $("#example1").DataTable();
   });
+  document.onscroll = function() {
+    if (window.innerHeight + window.scrollY > document.body.clientHeight) {
+      // document.getElementsByClassName('telepon').style.display = 'none';
+      // document.getElementsByClassName('kontakwa').style.display = 'none';
+    }
+    // if (window.innerHeight + window.scrollY < document.body.clientHeight) {
+      // document.getElementById('nav').style.display = 'block';
+      // document.getElementById('nav1').style.display = 'block';
+    // }
+  }
 </script>
 <!-- CKEditor -->
 <!-- <script>

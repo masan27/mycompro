@@ -25,7 +25,7 @@ $site                       = $this->konfigurasi_model->listing();
             <li><a href="<?php echo base_url() ?>" class="<?php echo $this->uri->segment(1) == '' ? 'active' : '' ?>">BERANDA</a></li>
 
             <!-- Berita -->
-            <li><a href="<?php echo base_url('berita') ?>" class="<?php if ($this->uri->segment(1) == 'berita' && $this->uri->segment(2) == '') echo 'active'; ?>">BERITA</a></li>            
+            <li><a href="<?php echo base_url('berita') ?>" class="<?php if ($this->uri->segment(1) == 'berita' && $this->uri->segment(2) != 'layanan' && $this->uri->segment(2) != 'profil') echo 'active'; ?>">Artikel</a></li>            
 
             <!-- Profil -->
             <li><a href="<?php echo base_url('berita/profil') ?>" class="<?php echo $this->uri->segment(2) == 'profil' ? 'active' : '' ?>">PROFIL</a></li>

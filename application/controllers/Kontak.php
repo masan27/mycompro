@@ -46,7 +46,7 @@ class Kontak extends CI_Controller
 			$mail->Username   = 'anaufal879@gmail.com';                     // SMTP username
 			$mail->Password   = 'Masuksaja';                               // SMTP password
 			$mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-			$mail->SMTPDebug  = 2;
+			// $mail->SMTPDebug  = 2;
 
 			//Recipients
 			// $mail->From($i->post('email'));
@@ -77,11 +77,11 @@ class Kontak extends CI_Controller
 				$this->session->set_flashdata('error',  'Email Error:  ' . $mail->ErrorInfo);
 			} else {
 				$this->session->set_flashdata('success', 'Pesan telah dikirim, Terima Kasih telah menghubungi ' . $site->namaweb);
-				// echo '
-				// <script>
-				// 	window.location.href = "' . base_url('kontak') .'";
-				// </script>
-				// ';
+				echo '
+				<script>
+					window.location.href = "' . base_url('kontak') .'";
+				</script>
+				';
 			}
 		}
 

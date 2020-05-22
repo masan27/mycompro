@@ -34,8 +34,7 @@
                                             <li><i class="fa fa-clock-o" aria-hidden="true"></i> 8:30am - 5:30pm</li>
                                             <li><i class="flaticon-placeholder"></i> Sahera Tropical Center Dhaka</li>
                                         </ul> -->
-                                    <p><?php echo nl2br($video->keterangan) ?></p>
-                                    <?= $link ?>
+                                    <p><?php echo nl2br($video->keterangan) ?></p>                                    
                                 </div>
                                 <!-- .events-content -->
                             </div>

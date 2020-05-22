@@ -75,7 +75,7 @@ class Berita_model extends CI_Model {
 			'berita.jenis_berita'	=> 'Berita'
 		));
 		$this->db->order_by('hits','DESC');
-		$this->db->limit(20);
+		$this->db->limit(10);
 		$query = $this->db->get();
 		return $query->result();
 	}

@@ -6,7 +6,7 @@
                     <div class="col-md-8">
                         <?php foreach ($berita as $berita) { ?>
                             <div class="blog-items">
-                                <div class="blog-img" style="width:770px;height:370px;">
+                                <div class="blog-img">
                                     <a href="<?php echo base_url('berita/read/' . $berita->slug_berita); ?>"><img src="<?php echo base_url('upload/image/' . $berita->gambar) ?>" alt="blog-img-10" class="img-responsive" /></a>
                                 </div>
                                 <!-- .blog-img -->
@@ -79,7 +79,7 @@
                                         <?php foreach ($populer as $populer) { ?>
                                             <li>
                                                 <div class="popular-news-img" style="width: 80px; height: 80px;">
-                                                    <a href="<?php echo base_url('berita/read/' . $listing->slug_berita); ?>"><img src="<?php echo base_url('upload/image/thumbs/' . $populer->gambar); ?>" alt="popular-news-img-1" /></a>
+                                                    <a href="<?php echo base_url('berita/read/' . $populer->slug_berita); ?>"><img src="<?php echo base_url('upload/image/thumbs/' . $populer->gambar); ?>" alt="popular-news-img-1" /></a>
                                                 </div>
                                                 <!-- .popular-news-img -->
                                                 <div class="popular-news-contant">

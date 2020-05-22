@@ -7,7 +7,7 @@
             <div class="single-event-item">
               <?php if($berita->gambar != "" || $berita->gambar != NULL) { ?>
                 <div class="single-event-img">
-                  <img style="max-width:1000px;height: auto;" src="<?php echo base_url('upload/image/' . $berita->gambar); ?>" alt="single-event-img-1" class="img-responsive" />
+                  <img src="<?php echo base_url('upload/image/' . $berita->gambar); ?>" alt="single-event-img-1" class="img-responsive" />
                 </div>
               <?php } ?>
               <!-- .single-event-img -->

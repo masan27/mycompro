@@ -82,7 +82,7 @@ if (isset($_COOKIE['txt'])) {
           <?php include('edit.php') ?>
 
           <?php
-          echo form_open(base_url('admin/galeri/proses'));
+          echo form_open(base_url('admin/download/proses'));
           ?>
           <!-- DataTales -->
           <div class="card shadow mb-4 <?= $bg_s . ' ' . $txt ?>">
@@ -115,6 +115,15 @@ if (isset($_COOKIE['txt'])) {
                       <th width="55px"></th>
                     </tr>
                   </thead>
+                  <tfoot>
+                    <tr class="text-center">
+                      <td width="5%"></td>
+                      <td>Unduh</td>
+                      <td width="55%">Judul</td>
+                      <td>Author</td>
+                      <td width="55px"></td>
+                    </tr>
+                  </tfoot>
                   <tbody>
 
                     <?php $i = 1;
