@@ -23,7 +23,7 @@ class Simple_login
 			$username 		= $username;
 			$nama 			= $user_login->nama;
 			$akses_level 	= $user_login->akses_level;
-			$gambar 	= $user_login->gambar;
+			$gambar 		= $user_login->gambar;
 			// Create session utk login
 			$this->CI->session->set_userdata('id_user',$id_user);
 			$this->CI->session->set_userdata('username',$username);

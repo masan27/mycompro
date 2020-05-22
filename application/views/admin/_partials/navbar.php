@@ -42,7 +42,11 @@ if (isset($_COOKIE['txt'])) {
 		<!-- Nav Item - User Information -->
 		<li class="nav-item dropdown no-arrow">
 			<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<img class="img-profile rounded-circle" src="<?php echo base_url('upload/user/' . $this->session->foto) ?>">
+				<?php if ($this->session->gambar == "") : ?>
+					<img class="img-profile rounded-circle" src="<?php echo base_url('assets/pendukung/anom.png') ?>">
+				<?php else : ?>
+					<img class="img-profile rounded-circle" src="<?php echo base_url('upload/user/' . $this->session->foto) ?>">
+				<?php endif; ?>
 			</a>
 			<!-- Dropdown - User Information -->
 			<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in <?= $bg_d ?>" aria-labelledby="userDropdown">

@@ -97,7 +97,7 @@ $nav_berita     = $this->nav_model->nav_berita();
                       <span><?php echo $site->whatsapp ?></span>
                     </li>
                   </ul>
-                </div>                                                
+                </div>
                 <!-- .address -->
               </div>
               <!-- .footer-widgets -->
@@ -149,7 +149,7 @@ $nav_berita     = $this->nav_model->nav_berita();
           <div class="copyright-txt">
             <p>&copy; <?php echo date('Y') ?>. Powered By <a href="<?= base_url('kontak') ?>" title="About Me">TheCroc27</a></p>
           </div>
-          <!-- .copyright-txt -->          
+          <!-- .copyright-txt -->
 
         </div>
         <!-- .footer-bottom -->
@@ -199,15 +199,16 @@ $nav_berita     = $this->nav_model->nav_berita();
   $(function() {
     $("#example1").DataTable();
   });
-  document.onscroll = function() {
-    if (window.innerHeight + window.scrollY > document.body.clientHeight) {
-      // document.getElementsByClassName('telepon').style.display = 'none';
-      // document.getElementsByClassName('kontakwa').style.display = 'none';
-    }
-    // if (window.innerHeight + window.scrollY < document.body.clientHeight) {
-      // document.getElementById('nav').style.display = 'block';
-      // document.getElementById('nav1').style.display = 'block';
-    // }
+  window.onscroll = function() {        
+    var tinggi = document.body.clientHeight - 100;
+        if (window.innerHeight + window.scrollY > tinggi) {
+          $('.telepon').hide();
+          $('.kontakwa').hide();
+        }
+        else{
+          $('.telepon').show();
+          $('.kontakwa').show();
+        }
   }
 </script>
 <!-- CKEditor -->

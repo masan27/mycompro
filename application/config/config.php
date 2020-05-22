@@ -24,9 +24,9 @@ date_default_timezone_set('Asia/Jakarta');
 | a PHP script and you can easily do that on your own.
 |
 */
-// $config['base_url'] = 'https://thecroc27.000webhostapp.com/e-astur/';
+// $config['base_url'] = 'https://thecroc27.000webhostapp.com/mycompro/';
 $config['base_url'] = 'http://localhost/mycompro/';
-// $config['base_url'] = 'http://bf7dccfb.ngrok.io/mycompro';
+// $config['base_url'] = 'http://95a120ea.ngrok.io/mycompro';
 
 /*
 |--------------------------------------------------------------------------

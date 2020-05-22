@@ -14,12 +14,20 @@ class Kunjungan
 	// Kunjungan
 	public function counter($alamat_kunjungan)
 	{
-		date_default_timezone_set('Asia/Jakarta');
+		if (!empty($_SERVER['HTTP_CLIENT_IP'])) {   //check ip from share internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {   //to check ip is pass from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+		}
+		
 		if($this->CI->uri->segment(1) == "admin" || $this->CI->uri->segment(1) == "assets") {
+
 
 		}else{ 
 			$data_kunjungan = array(	'alamat'		=> $alamat_kunjungan,
-										'ip_address'	=> $this->CI->input->ip_address(),
+										'ip_address'	=> $ip,
 										'hari'			=> date('Y-m-d'),
 										'waktu'			=> date('Y-m-d H:i:s')
 						);
