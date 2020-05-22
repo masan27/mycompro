@@ -106,7 +106,7 @@ $nav_berita     = $this->nav_model->nav_berita();
             <div class="col-md-6 col-sm-6">
               <div class="footer-widgets">
                 <div class="widgets-title">
-                  <h3>Latest News</h3>
+                  <h3>Lasted News</h3>
                 </div>
                 <!-- .widgets-title -->
                 <ul class="latest-news">
@@ -200,7 +200,8 @@ $nav_berita     = $this->nav_model->nav_berita();
     $("#example1").DataTable();
   });
 </script>
-<script>
+<!-- CKEditor -->
+<!-- <script>
   $(function() {
     //Initialize Select2 Elements
     $('.select2').select2()
@@ -223,6 +224,6 @@ $nav_berita     = $this->nav_model->nav_berita();
       }
     })
   })
-</script>
+</script> -->
 
 </html>

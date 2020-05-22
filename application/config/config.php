@@ -26,7 +26,7 @@ date_default_timezone_set('Asia/Jakarta');
 */
 // $config['base_url'] = 'https://thecroc27.000webhostapp.com/e-astur/';
 $config['base_url'] = 'http://localhost/mycompro/';
-// $config['base_url'] = 'https://35fd6cc7.ngrok.io/e-astur';
+// $config['base_url'] = 'http://3bc2c8db.ngrok.io/mycompro';
 
 /*
 |--------------------------------------------------------------------------

@@ -73,13 +73,13 @@
                         </div>
                         <div class="sidebar">
                             <div class="widget">
-                                <h4 class="sidebar-widget-title">Berita Terpopuler</h4>
+                                <h4 class="sidebar-widget-title">Berita Populer</h4>
                                 <div class="widget-content">
                                     <ul class="popular-news-option">
                                         <?php foreach ($populer as $populer) { ?>
                                             <li>
                                                 <div class="popular-news-img" style="width: 80px; height: 80px;">
-                                                    <a href="#"><img src="<?php echo base_url('upload/image/thumbs/' . $populer->gambar); ?>" alt="popular-news-img-1" /></a>
+                                                    <a href="<?php echo base_url('berita/read/' . $listing->slug_berita); ?>"><img src="<?php echo base_url('upload/image/thumbs/' . $populer->gambar); ?>" alt="popular-news-img-1" /></a>
                                                 </div>
                                                 <!-- .popular-news-img -->
                                                 <div class="popular-news-contant">

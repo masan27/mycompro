@@ -55,6 +55,9 @@ $site_info = $this->konfigurasi_model->listing();
   .nav li{
 	list-style: none;
   }
+  .latest-news .thumbnail-img{
+    height: auto !important;
+  }
   </style>
 </head>
 

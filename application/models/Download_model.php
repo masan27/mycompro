@@ -14,7 +14,7 @@ class Download_model extends CI_Model {
 		$this->db->select('download.*, kategori_download.nama_kategori_download, users.nama');
 		$this->db->from('download');
 		// Join dg 2 tabel
-		$this->db->join('kategori_download','kategori_download.id_kategori_download = download.id_kategori_download','LEFT');
+		$this->db->join('kategori_download','kategori_download.id_kategori_download = download.id_kategori_download','RIGHT');
 		$this->db->join('users','users.id_user = download.id_user','LEFT');
 		// End join
 		$this->db->order_by('id_download','DESC');
@@ -27,7 +27,7 @@ class Download_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('download');
 		$this->db->order_by('hits','DESC');
-		$this->db->limit(20);
+		$this->db->limit(5);
 		$query = $this->db->get();
 		return $query->result();
 	}

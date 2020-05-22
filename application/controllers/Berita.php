@@ -206,7 +206,7 @@ class Berita extends CI_Controller
 	{
 		$site 		= $this->konfigurasi_model->listing();
 		$berita 	= $this->berita_model->read($slug_berita);
-		$listing 	= $this->berita_model->listing_read();
+		$populer	= $this->berita_model->populer();
 		$kategori 	= $this->nav_model->nav_kategori_berita();
 
 		if (count(array($berita)) < 1) {
@@ -229,7 +229,7 @@ class Berita extends CI_Controller
 			'deskripsi'	=> $berita->judul_berita,
 			'keywords'	=> $berita->keywords,
 			'berita'	=> $berita,
-			'listing'	=> $listing,
+			'populer'	=> $populer,
 			'kategori'	=> $kategori,
 			'site'		=> $site,
 			'isi'		=> 'berita/read'

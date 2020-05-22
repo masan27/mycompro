@@ -20,8 +20,6 @@ class Simple_login
 		// Kalau ada, maka masuk ke halaman dashboard
 		if($user_login) {
 			$id_user 		= $user_login->id_user;
-			$id_bagian 		= $user_login->id_bagian;
-			$nama_bagian 	= $user_login->nama_bagian;
 			$username 		= $username;
 			$nama 			= $user_login->nama;
 			$akses_level 	= $user_login->akses_level;

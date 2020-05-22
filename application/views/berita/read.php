@@ -58,18 +58,18 @@
                         </div>
                         <div class="sidebar">
                             <div class="widget">
-                                <h4 class="sidebar-widget-title">Berita Lainnya</h4>
+                                <h4 class="sidebar-widget-title">Berita Populer</h4>
                                 <div class="widget-content">
                                     <ul class="popular-news-option">
-                                        <?php foreach ($listing as $listing) { ?>
+                                        <?php foreach ($populer as $populer) { ?>
                                             <li>
                                                 <div class="popular-news-img" style="width: 80px; height: 80px;">
-                                                    <a href="#"><img src="<?php echo base_url('upload/image/thumbs/' . $listing->gambar); ?>" alt="popular-news-img-1" /></a>
+                                                    <a href="<?php echo base_url('berita/read/' . $populer->slug_berita); ?>"><img src="<?php echo base_url('upload/image/thumbs/' . $populer->gambar); ?>" alt="popular-news-img-1" /></a>
                                                 </div>
                                                 <!-- .popular-news-img -->
                                                 <div class="popular-news-contant">
-                                                    <h5><a href="<?php echo base_url('berita/read/' . $listing->slug_berita); ?>"><?php echo $listing->judul_berita; ?></a></h5>
-                                                    <p><?php echo date('d M Y', strtotime($listing->tanggal_publish)); ?></p>
+                                                    <h5><a href="<?php echo base_url('berita/read/' . $populer->slug_berita); ?>"><?php echo $populer->judul_berita; ?></a></h5>
+                                                    <p><?php echo date('d M Y', strtotime($populer->tanggal_publish)); ?></p>
                                                 </div>
                                                 <!-- .popular-news-img -->
                                             </li>

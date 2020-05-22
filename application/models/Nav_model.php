@@ -91,8 +91,8 @@ class Nav_model extends CI_Model
 			'jenis_berita'	=> 'Berita',
 			'status_berita'	=> 'Publish'
 		));
-		$this->db->group_by('berita.id_kategori');
-		$this->db->order_by('kategori.id_kategori', 'DESC');
+		$this->db->order_by('berita.tanggal_post', 'DESC');
+		$this->db->limit(5);
 		$query = $this->db->get();
 		return $query->result();
 	}
